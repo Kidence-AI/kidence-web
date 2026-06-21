@@ -308,23 +308,24 @@
                     We are currently expanding pilot deployments and would like to hear from clinical sites, research groups working on continual learning or affective computing, and individuals living with the conditions above who are willing to inform the design.
                 </p>
                 <form id="contact-form" onsubmit="handleContact(event); return false;" class="grid grid-cols-1 md:grid-cols-12 gap-4 max-w-2xl">
-                    <input type="email" required placeholder="Email" class="md:col-span-7 px-4 py-3 bg-paper border border-rule focus:border-ink focus:outline-none text-sm">
-                    <select required class="md:col-span-5 px-4 py-3 bg-paper border border-rule focus:border-ink focus:outline-none text-sm text-ink">
+                    <input id="contact-email" name="email" type="email" required placeholder="Email" class="md:col-span-7 px-4 py-3 bg-paper border border-rule focus:border-ink focus:outline-none text-sm">
+                    <select id="contact-role" name="userGroup" required class="md:col-span-5 px-4 py-3 bg-paper border border-rule focus:border-ink focus:outline-none text-sm text-ink">
                         <option value="">Role…</option>
-                        <option>Clinician / BCBA</option>
-                        <option>Researcher</option>
-                        <option>Veteran service organization</option>
-                        <option>Parent / caregiver</option>
-                        <option>Investor</option>
-                        <option>Press</option>
-                        <option>Other</option>
+                        <option value="Clinician">Clinician / BCBA</option>
+                        <option value="Researcher">Researcher</option>
+                        <option value="Veteran service organization">Veteran service organization</option>
+                        <option value="Parent">Parent / caregiver</option>
+                        <option value="Investor">Investor</option>
+                        <option value="Press">Press</option>
+                        <option value="Other">Other</option>
                     </select>
-                    <button type="submit" class="md:col-span-12 mt-2 inline-flex items-center justify-center gap-2 bg-ink text-paper px-6 py-3 text-sm font-medium hover:bg-accent transition-colors">
-                        Request access
+                    <button id="contact-submit" type="submit" class="md:col-span-12 mt-2 inline-flex items-center justify-center gap-2 bg-ink text-paper px-6 py-3 text-sm font-medium hover:bg-accent transition-colors disabled:opacity-60 disabled:cursor-wait">
+                        <span id="contact-submit-label">Request access</span>
                         <svg class="w-3.5 h-3.5" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
                     </button>
                 </form>
                 <p id="contact-ack" class="text-sm text-accent hidden">Thank you &mdash; we&rsquo;ll be in touch.</p>
+                <p id="contact-err" class="text-sm text-red-600 hidden">Something went wrong. Please email <a class="underline" href="mailto:hello@kidence.ai">hello@kidence.ai</a> directly.</p>
             </div>
         </div>
     </section>
@@ -343,10 +344,48 @@
     </footer>
 
     <script>
-        function handleContact(e) {
+        const LOOPS_FORM_ENDPOINT = 'https://app.loops.so/api/newsletter-form/cmks0ppr912yw0i1glgwet7su';
+
+        async function handleContact(e) {
             e.preventDefault();
-            document.getElementById('contact-form').style.display = 'none';
-            document.getElementById('contact-ack').classList.remove('hidden');
+            const form = document.getElementById('contact-form');
+            const button = document.getElementById('contact-submit');
+            const label = document.getElementById('contact-submit-label');
+            const ack = document.getElementById('contact-ack');
+            const err = document.getElementById('contact-err');
+            const email = document.getElementById('contact-email').value.trim();
+            const role = document.getElementById('contact-role').value;
+
+            if (!email) return;
+
+            const originalLabel = label.textContent;
+            label.textContent = 'Sending…';
+            button.disabled = true;
+            err.classList.add('hidden');
+
+            try {
+                const params = new URLSearchParams();
+                params.append('email', email);
+                if (role) params.append('userGroup', role);
+
+                const response = await fetch(LOOPS_FORM_ENDPOINT, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: params.toString()
+                });
+
+                if (response.ok) {
+                    form.style.display = 'none';
+                    ack.classList.remove('hidden');
+                } else {
+                    throw new Error('Loops returned ' + response.status);
+                }
+            } catch (error) {
+                console.error(error);
+                err.classList.remove('hidden');
+                label.textContent = originalLabel;
+                button.disabled = false;
+            }
         }
     </script>
 </body>
