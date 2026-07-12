@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join the Kidence Family Beta</title>
+    <meta name="description" content="Kidence pairs a kid-friendly wearable and an early-detection model with in-the-moment parent coaching — catching emotional overwhelm early and helping kids understand their feelings. Join our early family beta.">
+    <link rel="icon" type="image/png" href="../favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        ink: '#0E1116',
+                        paper: '#FAFAF7',
+                        rule: '#D8D5CE',
+                        mute: '#6C6A66',
+                        accent: '#2C4A6B',
+                        accentSoft: '#E6ECF3',
+                    },
+                    fontFamily: {
+                        serif: ['Newsreader', 'Georgia', 'serif'],
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'ui-monospace', 'monospace'],
+                    },
+                    letterSpacing: {
+                        tightish: '-0.015em',
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        body { -webkit-font-smoothing: antialiased; }
+        .rule-top { border-top: 1px solid #D8D5CE; }
+        .rule-bottom { border-bottom: 1px solid #D8D5CE; }
+        .eyebrow {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: #6C6A66;
+        }
+        .lead { font-size: 1.2rem; line-height: 1.65; color: #2D2B27; }
+        .num-marker {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            letter-spacing: 0.12em;
+            color: #6C6A66;
+        }
+        .q-label { font-family: 'Newsreader', Georgia, serif; font-size: 1.25rem; letter-spacing: -0.015em; }
+        .field {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            background: #FAFAF7;
+            border: 1px solid #D8D5CE;
+            font-size: 0.875rem;
+        }
+        .field:focus { outline: none; border-color: #0E1116; }
+        .pill input { position: absolute; opacity: 0; pointer-events: none; }
+        .pill span {
+            display: inline-block;
+            padding: 0.625rem 1rem;
+            border: 1px solid #D8D5CE;
+            font-size: 0.875rem;
+            color: #0E1116;
+            background: #FAFAF7;
+            cursor: pointer;
+            transition: border-color .15s, background-color .15s;
+            user-select: none;
+        }
+        .pill span:hover { border-color: #6C6A66; }
+        .pill input:checked + span {
+            border-color: #2C4A6B;
+            background: #E6ECF3;
+            color: #2C4A6B;
+        }
+        .pill input:focus-visible + span { outline: 2px solid #2C4A6B; outline-offset: 2px; }
+        .hp-field { position: absolute; left: -9999px; top: -9999px; height: 0; width: 0; overflow: hidden; }
+    </style>
+</head>
+<body class="bg-paper text-ink font-sans">
+
+    <!-- Top bar -->
+    <header class="rule-bottom">
+        <div class="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
+            <a href="../" class="flex items-center gap-2 font-serif text-xl tracking-tightish">
+                <span class="inline-block w-2 h-2 rounded-full bg-accent"></span>
+                Kidence
+            </a>
+            <a href="../" class="text-sm text-mute hover:text-ink transition">&larr; Back to kidence.ai</a>
+        </div>
+    </header>
+
+    <!-- Intro -->
+    <section class="max-w-3xl mx-auto px-6 pt-16 pb-10 md:pt-24">
+        <div class="space-y-8">
+            <div class="flex flex-wrap gap-2">
+                <span class="text-[11px] font-mono uppercase tracking-widest px-2.5 py-1 border border-accent text-accent rounded-full">Family beta · Now enrolling</span>
+                <span class="text-[11px] font-mono uppercase tracking-widest px-2.5 py-1 border border-rule rounded-full text-mute">3–5 minutes</span>
+            </div>
+            <h1 class="font-serif font-light text-4xl md:text-6xl leading-[1.08] tracking-tightish">
+                Join the Kidence <span class="italic text-accent">family beta</span>.
+            </h1>
+            <div class="space-y-4">
+                <p class="lead">
+                    Kidence pairs a kid&#8209;friendly wearable with an early&#8209;detection model that notices the physiological signs of emotional overwhelm before things boil over &mdash; tantrums, meltdowns, frustration, anxiety, and tough transitions.
+                </p>
+                <p class="text-mute leading-relaxed">
+                    When an early signal appears, Kidence coaches you on what to say and do in the moment, and helps your child learn to recognize and understand their own feelings &mdash; so hard moments get caught earlier, pass faster, and moods become more stable over time.
+                </p>
+                <p class="text-mute leading-relaxed">
+                    We are inviting a small group of families into our early beta. The beta may include a lightweight wearable, short parent check&#8209;ins, and optional notes about emotional outbursts or difficult routines.
+                </p>
+                <p class="text-sm text-mute leading-relaxed">
+                    This is not a medical device, diagnosis tool, or therapy service. We are learning from families and testing whether real&#8209;time signals and parent coaching can help reduce the frequency, intensity, or duration of difficult emotional moments.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success panel (hidden until submit) -->
+    <section id="success-panel" class="hidden max-w-3xl mx-auto px-6 pb-28">
+        <div class="rule-top pt-10 space-y-4">
+            <div class="num-marker">Submitted</div>
+            <h2 class="font-serif font-light text-3xl md:text-4xl tracking-tightish">You&rsquo;re on the list. Thank you.</h2>
+            <p class="text-mute leading-relaxed max-w-xl">
+                We&rsquo;ll reach out by email as beta spots open. If you know another parent dealing
+                with tantrums or meltdowns, sharing this page with them genuinely helps us build the right thing:
+            </p>
+            <p class="font-mono text-sm text-accent">kidence.ai/beta</p>
+        </div>
+    </section>
+
+    <!-- Form -->
+    <section id="form-section" class="max-w-3xl mx-auto px-6 pb-28">
+        <form id="beta-form" novalidate class="space-y-12">
+
+            <!-- Honeypot: humans never see or fill this -->
+            <div class="hp-field" aria-hidden="true">
+                <label>Website <input type="text" name="website" id="hp-website" tabindex="-1" autocomplete="off"></label>
+            </div>
+
+            <div class="rule-top pt-10 space-y-8">
+                <div class="num-marker">About you</div>
+
+                <div class="space-y-2">
+                    <label for="parent_name" class="q-label">1. Parent / caregiver name <span class="text-accent">*</span></label>
+                    <input id="parent_name" class="field" type="text" autocomplete="name" placeholder="Your name">
+                </div>
+
+                <div class="space-y-2">
+                    <label for="email" class="q-label">2. Email address <span class="text-accent">*</span></label>
+                    <input id="email" class="field" type="email" autocomplete="email" placeholder="you@example.com">
+                </div>
+
+                <div class="space-y-2">
+                    <label for="phone" class="q-label">3. Phone number</label>
+                    <p class="text-sm text-mute">Optional</p>
+                    <input id="phone" class="field" type="tel" autocomplete="tel" placeholder="(555) 555-5555">
+                </div>
+
+                <div class="space-y-2">
+                    <span class="q-label block">4. Where are you located?</span>
+                    <p class="text-sm text-mute">Optional &mdash; country and state/region only, for beta logistics</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <input id="country" class="field" type="text" autocomplete="country-name" placeholder="Country">
+                        <input id="state_region" class="field" type="text" autocomplete="address-level1" placeholder="State / region">
+                    </div>
+                </div>
+            </div>
+
+            <div class="rule-top pt-10 space-y-8">
+                <div class="num-marker">Your family</div>
+
+                <fieldset class="space-y-3">
+                    <legend class="q-label">5. Child&rsquo;s age range <span class="text-accent">*</span></legend>
+                    <div id="child_age_range" class="flex flex-wrap gap-2">
+                        <label class="pill"><input type="radio" name="child_age_range" value="2-3"><span>2&ndash;3</span></label>
+                        <label class="pill"><input type="radio" name="child_age_range" value="4-5"><span>4&ndash;5</span></label>
+                        <label class="pill"><input type="radio" name="child_age_range" value="6-7"><span>6&ndash;7</span></label>
+                        <label class="pill"><input type="radio" name="child_age_range" value="8-10"><span>8&ndash;10</span></label>
+                        <label class="pill"><input type="radio" name="child_age_range" value="11-12"><span>11&ndash;12</span></label>
+                        <label class="pill"><input type="radio" name="child_age_range" value="multiple"><span>Multiple children</span></label>
+                    </div>
+                </fieldset>
+
+                <fieldset class="space-y-3">
+                    <legend class="q-label">6. Which situations are hardest for your family right now? <span class="text-accent">*</span></legend>
+                    <p class="text-sm text-mute">Select all that apply</p>
+                    <div id="hard_situations" class="flex flex-wrap gap-2">
+                        <label class="pill"><input type="checkbox" name="hard_situations" value="Tantrums / meltdowns"><span>Tantrums / meltdowns</span></label>
+                        <label class="pill"><input type="checkbox" name="hard_situations" value="Anger or frustration"><span>Anger or frustration</span></label>
+                        <label class="pill"><input type="checkbox" name="hard_situations" value="Homework struggles"><span>Homework struggles</span></label>
+                        <label class="pill"><input type="checkbox" name="hard_situations" value="Bedtime battles"><span>Bedtime battles</span></label>
+                        <label class="pill"><input type="checkbox" name="hard_situations" value="Morning routine"><span>Morning routine</span></label>
+                        <label class="pill"><input type="checkbox" name="hard_situations" value="Screen time transitions"><span>Screen time transitions</span></label>
+                        <label class="pill"><input type="checkbox" name="hard_situations" value="Sibling conflict"><span>Sibling conflict</span></label>
+                        <label class="pill"><input type="checkbox" name="hard_situations" value="Separation anxiety / drop-off"><span>Separation anxiety / drop&#8209;off</span></label>
+                        <label class="pill"><input type="checkbox" name="hard_situations" value="Sensory overwhelm"><span>Sensory overwhelm</span></label>
+                        <label class="pill"><input type="checkbox" name="hard_situations" value="Anxiety / worries"><span>Anxiety / worries</span></label>
+                        <label class="pill"><input type="checkbox" name="hard_situations" value="Other"><span>Other</span></label>
+                    </div>
+                    <input id="hard_situations_other" class="field hidden" type="text" placeholder="Tell us more">
+                </fieldset>
+
+                <fieldset class="space-y-3">
+                    <legend class="q-label">7. How often do difficult emotional episodes happen? <span class="text-accent">*</span></legend>
+                    <div id="episode_frequency" class="flex flex-wrap gap-2">
+                        <label class="pill"><input type="radio" name="episode_frequency" value="multiple_daily"><span>Multiple times per day</span></label>
+                        <label class="pill"><input type="radio" name="episode_frequency" value="daily"><span>About once a day</span></label>
+                        <label class="pill"><input type="radio" name="episode_frequency" value="few_weekly"><span>A few times per week</span></label>
+                        <label class="pill"><input type="radio" name="episode_frequency" value="weekly"><span>About once a week</span></label>
+                        <label class="pill"><input type="radio" name="episode_frequency" value="less"><span>Less than once a week</span></label>
+                    </div>
+                </fieldset>
+
+                <div class="space-y-2">
+                    <label for="episode_description" class="q-label">8. What usually happens during these moments?</label>
+                    <p class="text-sm text-mute">Optional &mdash; a sentence or two is plenty</p>
+                    <textarea id="episode_description" class="field" rows="3" placeholder="e.g., screaming, hitting, refusing to move on from an activity..."></textarea>
+                </div>
+
+                <div class="space-y-2">
+                    <label for="what_tried" class="q-label">9. What have you already tried?</label>
+                    <p class="text-sm text-mute">Optional</p>
+                    <textarea id="what_tried" class="field" rows="3" placeholder="e.g., timers, countdowns, timeouts, parenting books, therapy..."></textarea>
+                </div>
+            </div>
+
+            <div class="rule-top pt-10 space-y-8">
+                <div class="num-marker">The beta</div>
+
+                <fieldset class="space-y-3">
+                    <legend class="q-label">10. Would you be open to your child using a lightweight wearable during the beta? <span class="text-accent">*</span></legend>
+                    <div id="wearable_willingness" class="flex flex-wrap gap-2">
+                        <label class="pill"><input type="radio" name="wearable_willingness" value="yes"><span>Yes</span></label>
+                        <label class="pill"><input type="radio" name="wearable_willingness" value="maybe"><span>Maybe</span></label>
+                        <label class="pill"><input type="radio" name="wearable_willingness" value="no"><span>No</span></label>
+                        <label class="pill"><input type="radio" name="wearable_willingness" value="learn_more"><span>I&rsquo;d like to learn more first</span></label>
+                    </div>
+                </fieldset>
+
+                <fieldset class="space-y-3">
+                    <legend class="q-label">11. Would you be willing to spend 1&ndash;2 minutes after an emotional episode logging what happened? <span class="text-accent">*</span></legend>
+                    <div id="logging_willingness" class="flex flex-wrap gap-2">
+                        <label class="pill"><input type="radio" name="logging_willingness" value="yes"><span>Yes</span></label>
+                        <label class="pill"><input type="radio" name="logging_willingness" value="maybe"><span>Maybe</span></label>
+                        <label class="pill"><input type="radio" name="logging_willingness" value="no"><span>No</span></label>
+                    </div>
+                </fieldset>
+
+                <fieldset class="space-y-3">
+                    <legend class="q-label">12. What would make this product valuable enough for you to keep using?</legend>
+                    <p class="text-sm text-mute">Select all that apply</p>
+                    <div id="valuable_outcomes" class="flex flex-wrap gap-2">
+                        <label class="pill"><input type="checkbox" name="valuable_outcomes" value="Earlier warning before a meltdown"><span>Earlier warning before a meltdown</span></label>
+                        <label class="pill"><input type="checkbox" name="valuable_outcomes" value="Help knowing what to say in the moment"><span>Help knowing what to say in the moment</span></label>
+                        <label class="pill"><input type="checkbox" name="valuable_outcomes" value="Shorter tantrums / meltdowns"><span>Shorter tantrums / meltdowns</span></label>
+                        <label class="pill"><input type="checkbox" name="valuable_outcomes" value="Better understanding of triggers"><span>Better understanding of triggers</span></label>
+                        <label class="pill"><input type="checkbox" name="valuable_outcomes" value="Less yelling or parent stress"><span>Less yelling or parent stress</span></label>
+                        <label class="pill"><input type="checkbox" name="valuable_outcomes" value="Better bedtime / morning routine"><span>Better bedtime / morning routine</span></label>
+                        <label class="pill"><input type="checkbox" name="valuable_outcomes" value="Better sibling conflict support"><span>Better sibling conflict support</span></label>
+                        <label class="pill"><input type="checkbox" name="valuable_outcomes" value="Better child self-regulation skills"><span>Better child self&#8209;regulation skills</span></label>
+                        <label class="pill"><input type="checkbox" name="valuable_outcomes" value="Other"><span>Other</span></label>
+                    </div>
+                    <input id="valuable_outcomes_other" class="field hidden" type="text" placeholder="Tell us more">
+                </fieldset>
+
+                <fieldset class="space-y-3">
+                    <legend class="q-label">13. If Kidence worked well for your family, would you consider paying for it? <span class="text-accent">*</span></legend>
+                    <div id="payment_willingness" class="flex flex-wrap gap-2">
+                        <label class="pill"><input type="radio" name="payment_willingness" value="yes_10_15"><span>Yes, $10&ndash;15/month</span></label>
+                        <label class="pill"><input type="radio" name="payment_willingness" value="yes_15_25"><span>Yes, $15&ndash;25/month</span></label>
+                        <label class="pill"><input type="radio" name="payment_willingness" value="device_only"><span>Yes, but only a one&#8209;time device purchase</span></label>
+                        <label class="pill"><input type="radio" name="payment_willingness" value="maybe"><span>Maybe</span></label>
+                        <label class="pill"><input type="radio" name="payment_willingness" value="no"><span>No</span></label>
+                    </div>
+                </fieldset>
+
+                <fieldset class="space-y-3">
+                    <legend class="q-label">14. Are you interested in joining a 2&#8209;week beta? <span class="text-accent">*</span></legend>
+                    <div id="beta_interest" class="flex flex-wrap gap-2">
+                        <label class="pill"><input type="radio" name="beta_interest" value="yes_asap"><span>Yes, as soon as possible</span></label>
+                        <label class="pill"><input type="radio" name="beta_interest" value="yes_later"><span>Yes, but later</span></label>
+                        <label class="pill"><input type="radio" name="beta_interest" value="maybe"><span>Maybe</span></label>
+                        <label class="pill"><input type="radio" name="beta_interest" value="not_now"><span>Not right now</span></label>
+                    </div>
+                </fieldset>
+
+                <div class="space-y-2">
+                    <label for="additional_notes" class="q-label">15. Anything else you want us to know?</label>
+                    <p class="text-sm text-mute">Optional</p>
+                    <textarea id="additional_notes" class="field" rows="3"></textarea>
+                </div>
+            </div>
+
+            <div class="rule-top pt-8 space-y-6">
+                <p id="form-error" class="hidden text-sm text-red-700 border border-red-200 bg-red-50 px-4 py-3"></p>
+                <p class="text-xs text-mute leading-relaxed max-w-xl">
+                    By submitting this form, I agree that Kidence may contact me about the beta.
+                    I understand this is an early research/beta product and is not a medical,
+                    diagnostic, or therapy service.
+                </p>
+                <button id="submit-btn" type="submit" class="inline-flex items-center gap-2 bg-ink text-paper px-8 py-3.5 text-sm font-medium hover:bg-accent transition-colors disabled:opacity-60 disabled:cursor-wait">
+                    <span id="submit-label">Join the beta waitlist</span>
+                    <svg class="w-3.5 h-3.5" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+                </button>
+            </div>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer class="rule-top">
+        <div class="max-w-6xl mx-auto px-6 py-10 flex flex-col md:flex-row justify-between gap-6 text-xs text-mute">
+            <div class="flex items-center gap-2">
+                <span class="inline-block w-1.5 h-1.5 rounded-full bg-accent"></span>
+                <span>Kidence Research · 2026</span>
+            </div>
+            <div class="flex flex-wrap gap-6">
+                <span>This is not a medical device, diagnosis tool, or therapy service.</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ── Supabase config ─────────────────────────────────────────────
+        // Paste from: Supabase dashboard → your project → Settings → API.
+        // The anon key is safe to publish: the beta_waitlist table is
+        // insert-only for the public (RLS) — nobody can read data with it.
+        const SUPABASE_URL = 'https://ljrdfkjhezldpmevctgt.supabase.co';      // e.g. https://abcdefgh.supabase.co
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxqcmRma2poZXpsZHBtZXZjdGd0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUxMTI4MzYsImV4cCI6MjA5MDY4ODgzNn0.MqdozIW4o0nA4jc_Hd9_g1AGffssToPZZNXYdpnSzOs';
+        // ────────────────────────────────────────────────────────────────
+
+        const form = document.getElementById('beta-form');
+        const errorBox = document.getElementById('form-error');
+        const submitBtn = document.getElementById('submit-btn');
+        const submitLabel = document.getElementById('submit-label');
+
+        // Reveal "Other" inputs when their checkbox is toggled
+        function wireOther(groupId, inputId) {
+            document.getElementById(groupId).addEventListener('change', () => {
+                const checked = !!document.querySelector('#' + groupId + ' input[value="Other"]:checked');
+                document.getElementById(inputId).classList.toggle('hidden', !checked);
+            });
+        }
+        wireOther('hard_situations', 'hard_situations_other');
+        wireOther('valuable_outcomes', 'valuable_outcomes_other');
+
+        const radioValue = (name) => (document.querySelector('input[name="' + name + '"]:checked') || {}).value || '';
+        const checkedValues = (name) => Array.from(document.querySelectorAll('input[name="' + name + '"]:checked')).map(el => el.value);
+        const text = (id) => document.getElementById(id).value.trim();
+
+        function showError(message) {
+            errorBox.textContent = message;
+            errorBox.classList.remove('hidden');
+            errorBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            errorBox.classList.add('hidden');
+
+            const payload = {
+                parent_name: text('parent_name'),
+                email: text('email'),
+                phone: text('phone') || null,
+                country: text('country') || null,
+                state_region: text('state_region') || null,
+                child_age_range: radioValue('child_age_range'),
+                hard_situations: checkedValues('hard_situations'),
+                hard_situations_other: text('hard_situations_other') || null,
+                episode_frequency: radioValue('episode_frequency'),
+                episode_description: text('episode_description') || null,
+                what_tried: text('what_tried') || null,
+                wearable_willingness: radioValue('wearable_willingness'),
+                logging_willingness: radioValue('logging_willingness'),
+                valuable_outcomes: checkedValues('valuable_outcomes'),
+                valuable_outcomes_other: text('valuable_outcomes_other') || null,
+                payment_willingness: radioValue('payment_willingness'),
+                beta_interest: radioValue('beta_interest'),
+                additional_notes: text('additional_notes') || null,
+                source: new URLSearchParams(window.location.search).get('src') || null,
+                consent: true,
+            };
+
+            if (!payload.parent_name || !payload.email || !/.+@.+\..+/.test(payload.email) ||
+                !payload.child_age_range || payload.hard_situations.length === 0 ||
+                !payload.episode_frequency || !payload.wearable_willingness ||
+                !payload.logging_willingness || !payload.payment_willingness ||
+                !payload.beta_interest) {
+                showError('Please answer all required questions (marked with *), including a valid email.');
+                return;
+            }
+
+            // Honeypot: bots get a fake success, nothing is stored
+            if (document.getElementById('hp-website').value) {
+                showSuccess();
+                return;
+            }
+
+            submitBtn.disabled = true;
+            submitLabel.textContent = 'Submitting…';
+
+            try {
+                if (SUPABASE_URL.indexOf('PASTE_') === 0) throw new Error('Form is not configured yet.');
+
+                const response = await fetch(SUPABASE_URL + '/rest/v1/beta_waitlist', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'apikey': SUPABASE_ANON_KEY,
+                        'Authorization': 'Bearer ' + SUPABASE_ANON_KEY,
+                        'Prefer': 'return=minimal',
+                    },
+                    body: JSON.stringify(payload),
+                });
+
+                if (!response.ok) throw new Error('Insert failed: ' + response.status);
+                showSuccess();
+            } catch (error) {
+                console.error(error);
+                showError('Something went wrong submitting the form. Please try again, or email hello@kidence.ai and we’ll add you directly.');
+                submitBtn.disabled = false;
+                submitLabel.textContent = 'Join the beta waitlist';
+            }
+        });
+
+        function showSuccess() {
+            document.getElementById('form-section').classList.add('hidden');
+            document.getElementById('success-panel').classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
