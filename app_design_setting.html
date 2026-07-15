@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Kidence - Settings</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --coral: #F09478;
+            --cream: #FFF9F0;
+            --dark: #2D2926;
+            --muted: #6B6661;
+        }
+
+        html, body {
+            height: 100%;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--cream);
+            color: var(--dark);
+            padding-top: env(safe-area-inset-top);
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+
+        .font-display {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Fixed Global Header */
+        .global-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            background: var(--cream);
+            z-index: 200;
+            padding-top: env(safe-area-inset-top);
+            padding-left: env(safe-area-inset-left);
+            padding-right: env(safe-area-inset-right);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 24px;
+            min-height: 60px;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .header-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-weight: 500;
+            color: var(--dark);
+        }
+
+        /* Settings Icon - Highly Visible */
+        .settings-icon {
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            background: var(--coral);
+            border: 2px solid var(--coral);
+            box-shadow: 0 4px 12px rgba(240, 148, 120, 0.4);
+            position: relative;
+            z-index: 201;
+            flex-shrink: 0;
+        }
+
+        .settings-icon:hover,
+        .settings-icon:active {
+            background: #D4A373;
+            border-color: #D4A373;
+            transform: rotate(15deg) scale(1.05);
+            box-shadow: 0 6px 16px rgba(240, 148, 120, 0.5);
+        }
+
+        .settings-icon svg {
+            width: 24px;
+            height: 24px;
+            color: white;
+            stroke-width: 2.5;
+            pointer-events: none;
+        }
+
+        /* Tab Navigation */
+        .tab-navigation {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background: var(--cream);
+            border-top: 1px solid rgba(240, 148, 120, 0.1);
+            padding: 12px 0;
+            padding-bottom: calc(12px + env(safe-area-inset-bottom));
+        }
+
+        .tab-item {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            padding: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--muted);
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .tab-item.active {
+            color: var(--coral);
+        }
+
+        .tab-item:hover {
+            opacity: 0.7;
+        }
+
+        /* Main Content Area */
+        .main-content {
+            margin-top: 76px;
+            padding: 24px;
+            padding-bottom: calc(80px + env(safe-area-inset-bottom));
+            min-height: calc(100vh - 76px);
+        }
+
+        .view-section {
+            display: none;
+        }
+
+        .view-section.active {
+            display: block;
+        }
+
+        /* Settings Overlay */
+        #settings-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(45, 41, 38, 0.5);
+            backdrop-filter: blur(12px);
+            z-index: 1500;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        #settings-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .settings-panel {
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+            max-width: 480px;
+            background: var(--cream);
+            box-shadow: -8px 0 32px rgba(0, 0, 0, 0.15);
+            transform: translateX(100%);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow-y: auto;
+            overflow-x: hidden;
+            padding-top: env(safe-area-inset-top);
+        }
+
+        #settings-overlay.active .settings-panel {
+            transform: translateX(0);
+        }
+
+        .settings-content {
+            padding: 32px;
+            padding-bottom: 64px;
+        }
+
+        .settings-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 32px;
+        }
+
+        .settings-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .close-btn {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border-radius: 50%;
+            background: rgba(240, 148, 120, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .close-btn:hover {
+            background: rgba(240, 148, 120, 0.2);
+        }
+
+        .close-btn svg {
+            width: 22px;
+            height: 22px;
+            color: var(--coral);
+        }
+
+        /* Profile Header */
+        .profile-header {
+            background: white;
+            border-radius: 40px;
+            padding: 32px;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+        }
+
+        .profile-photo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--coral) 0%, #D4A373 100%);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 32px;
+            font-weight: 600;
+        }
+
+        .profile-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 4px;
+        }
+
+        .profile-age {
+            font-size: 16px;
+            color: var(--muted);
+            margin-bottom: 12px;
+        }
+
+        .parent-account {
+            font-size: 14px;
+            color: var(--muted);
+            padding-top: 12px;
+            border-top: 1px solid rgba(240, 148, 120, 0.2);
+        }
+
+        /* Settings Section */
+        .settings-section {
+            background: white;
+            border-radius: 40px;
+            padding: 28px;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 20px;
+        }
+
+        .toggle-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 16px;
+            padding: 16px 0;
+        }
+
+        .toggle-item:not(:last-child) {
+            border-bottom: 1px solid rgba(240, 148, 120, 0.1);
+        }
+
+        .toggle-content {
+            flex: 1;
+        }
+
+        .toggle-label {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--dark);
+            margin-bottom: 4px;
+        }
+
+        .toggle-description {
+            font-size: 13px;
+            color: var(--muted);
+            line-height: 1.5;
+        }
+
+        /* Toggle Switch */
+        .toggle-switch {
+            position: relative;
+            width: 52px;
+            height: 32px;
+            flex-shrink: 0;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #E5E5E5;
+            transition: 0.3s;
+            border-radius: 32px;
+        }
+
+        .toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 24px;
+            width: 24px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: 0.3s;
+            border-radius: 50%;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .toggle-switch input:checked + .toggle-slider {
+            background-color: var(--coral);
+        }
+
+        .toggle-switch input:checked + .toggle-slider:before {
+            transform: translateX(20px);
+        }
+
+        /* Action Button */
+        .action-button {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .action-button:not(:last-child) {
+            border-bottom: 1px solid rgba(240, 148, 120, 0.1);
+        }
+
+        .action-button:hover {
+            opacity: 0.7;
+        }
+
+        .action-label {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--dark);
+        }
+
+        .action-arrow {
+            width: 20px;
+            height: 20px;
+            color: var(--coral);
+        }
+
+        /* Kidence Plus Card */
+        .plus-card {
+            background: linear-gradient(135deg, rgba(240, 148, 120, 0.1) 0%, rgba(212, 163, 115, 0.1) 100%);
+            border: 2px solid rgba(240, 148, 120, 0.3);
+            border-radius: 40px;
+            padding: 28px;
+            margin-bottom: 24px;
+        }
+
+        .plus-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .plus-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .plus-status {
+            display: inline-block;
+            padding: 6px 14px;
+            background: var(--coral);
+            color: white;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .plus-description {
+            font-size: 14px;
+            color: var(--muted);
+            line-height: 1.5;
+        }
+
+        /* Device Status */
+        .device-status {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 0;
+        }
+
+        .device-info {
+            flex: 1;
+        }
+
+        .device-name {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--dark);
+            margin-bottom: 4px;
+        }
+
+        .device-battery {
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        .device-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #4CAF50;
+            box-shadow: 0 0 8px rgba(76, 175, 80, 0.5);
+        }
+
+        /* Content Styles */
+        .page-content {
+            text-align: center;
+            padding: 48px 24px;
+        }
+
+        .page-title {
+            font-size: 24px;
+            font-weight: 400;
+            color: var(--dark);
+            font-family: 'Playfair Display', serif;
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        @media (max-width: 640px) {
+            .settings-panel {
+                max-width: 100%;
+            }
+
+            .settings-content {
+                padding: 24px;
+            }
+
+            .header-content {
+                padding: 14px 20px;
+            }
+
+            .header-name {
+                font-size: 20px;
+            }
+
+            .settings-icon {
+                width: 40px;
+                height: 40px;
+            }
+
+            .settings-icon svg {
+                width: 22px;
+                height: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Fixed Global Header -->
+    <div class="global-header">
+        <div class="header-content">
+            <div class="header-left">
+                <span class="header-name">Leo (14 Months)</span>
+            </div>
+            <div class="settings-icon" onclick="openSettings()" role="button" aria-label="Open Settings">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Home View -->
+        <div id="view-home" class="view-section active">
+            <div class="page-content">
+                <p class="page-title">Leo is finding his rhythm</p>
+            </div>
+        </div>
+
+        <!-- Trends View -->
+        <div id="view-trends" class="view-section">
+            <div class="page-content">
+                <p class="page-title">Trends & Analytics</p>
+            </div>
+        </div>
+
+        <!-- Log View -->
+        <div id="view-log" class="view-section">
+            <div class="page-content">
+                <p class="page-title">Activity Log</p>
+            </div>
+        </div>
+
+        <!-- Care View -->
+        <div id="view-care" class="view-section">
+            <div class="page-content">
+                <p class="page-title">Care & Wellness</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tab Navigation -->
+    <div class="tab-navigation">
+        <div class="tab-item active" onclick="switchTab('home')">
+            <span>Home</span>
+        </div>
+        <div class="tab-item" onclick="switchTab('trends')">
+            <span>Trends</span>
+        </div>
+        <div class="tab-item" onclick="switchTab('log')">
+            <span>Log</span>
+        </div>
+        <div class="tab-item" onclick="switchTab('care')">
+            <span>Care</span>
+        </div>
+    </div>
+
+    <!-- Settings Overlay -->
+    <div id="settings-overlay" onclick="closeSettingsOnBackdrop(event)">
+        <div class="settings-panel" onclick="event.stopPropagation()">
+            <div class="settings-content">
+                <!-- Settings Header -->
+                <div class="settings-header">
+                    <h2 class="settings-title">Settings</h2>
+                    <div class="close-btn" onclick="closeSettings()" role="button" aria-label="Close Settings">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Profile Header -->
+                <div class="profile-header">
+                    <div class="profile-photo">L</div>
+                    <div class="profile-name">Leo</div>
+                    <div class="profile-age">14 Months</div>
+                    <div class="parent-account">Parent Account: Olivia</div>
+                </div>
+
+                <!-- Account Section -->
+                <div class="settings-section">
+                    <h3 class="section-title">Account</h3>
+                    <div class="plus-card" style="margin-bottom: 0;">
+                        <div class="plus-header">
+                            <h3 class="plus-title">Kidence Plus</h3>
+                            <span class="plus-status">Active</span>
+                        </div>
+                        <p class="plus-description">Premium features enabled. Enjoy advanced analytics, extended storage, and priority support.</p>
+                    </div>
+                </div>
+
+                <!-- Privacy & Safety -->
+                <div class="settings-section">
+                    <h3 class="section-title">Privacy & Safety</h3>
+                    <div class="toggle-item">
+                        <div class="toggle-content">
+                            <div class="toggle-label">Microphone Active</div>
+                            <div class="toggle-description">When disabled, audio data is processed only locally on the device for maximum privacy.</div>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="microphone-toggle" checked>
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Security -->
+                <div class="settings-section">
+                    <h3 class="section-title">Security</h3>
+                    <div class="toggle-item">
+                        <div class="toggle-content">
+                            <div class="toggle-label">Face ID</div>
+                            <div class="toggle-description">Use Face ID to securely unlock the app and protect sensitive information.</div>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="faceid-toggle" checked>
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Sharing & Access -->
+                <div class="settings-section">
+                    <h3 class="section-title">Sharing & Access</h3>
+                    <div class="action-button" onclick="handleFamilyAccess()">
+                        <span class="action-label">Manage Family Access</span>
+                        <svg class="action-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </div>
+                    <div class="action-button" onclick="handleCaregiverLink()">
+                        <span class="action-label">Generate Caregiver Link</span>
+                        <svg class="action-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Device Status -->
+                <div class="settings-section">
+                    <h3 class="section-title">Device Status</h3>
+                    <div class="device-status">
+                        <div class="device-info">
+                            <div class="device-name">Kidence Band v1.0</div>
+                            <div class="device-battery">Battery: 87%</div>
+                        </div>
+                        <div class="device-indicator"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Tab Navigation
+        function switchTab(tab) {
+            // Hide all views
+            document.querySelectorAll('.view-section').forEach(view => {
+                view.classList.remove('active');
+            });
+            
+            // Remove active class from all tabs
+            document.querySelectorAll('.tab-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Show selected view
+            const viewId = `view-${tab}`;
+            const view = document.getElementById(viewId);
+            if (view) {
+                view.classList.add('active');
+            }
+            
+            // Add active class to clicked tab
+            event.target.closest('.tab-item').classList.add('active');
+        }
+
+        // Settings Overlay Functions
+        function openSettings() {
+            const overlay = document.getElementById('settings-overlay');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeSettings() {
+            const overlay = document.getElementById('settings-overlay');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function closeSettingsOnBackdrop(event) {
+            // Only close if clicking directly on the backdrop (not the panel)
+            if (event.target.id === 'settings-overlay') {
+                closeSettings();
+            }
+        }
+
+        // Handle action buttons
+        function handleFamilyAccess() {
+            alert('Family Access management coming soon!');
+            // TODO: Implement family access management
+        }
+
+        function handleCaregiverLink() {
+            alert('Caregiver link generation coming soon!');
+            // TODO: Implement caregiver link generation
+        }
+
+        // Microphone toggle handler
+        document.getElementById('microphone-toggle').addEventListener('change', function(e) {
+            const isActive = e.target.checked;
+            console.log('Microphone active:', isActive);
+            // TODO: Implement microphone toggle logic
+        });
+
+        // Face ID toggle handler
+        document.getElementById('faceid-toggle').addEventListener('change', function(e) {
+            const isActive = e.target.checked;
+            console.log('Face ID active:', isActive);
+            // TODO: Implement Face ID toggle logic
+        });
+
+        // Close settings on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeSettings();
+            }
+        });
+
+        // Ensure settings icon is always visible
+        document.addEventListener('DOMContentLoaded', function() {
+            const settingsIcon = document.querySelector('.settings-icon');
+            if (settingsIcon) {
+                settingsIcon.style.display = 'flex';
+                settingsIcon.style.visibility = 'visible';
+                settingsIcon.style.opacity = '1';
+            }
+        });
+    </script>
+</body>
+</html>

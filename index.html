@@ -3,445 +3,193 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kidence — Early Warning and Parent Coaching for Emotional Overwhelm</title>
-    <meta name="description" content="Kidence is a parent learning system: a kid-friendly wearable detects rising emotional overwhelm, coaches you through the moment, and turns every real tantrum or meltdown into practice — so you get better, and your child gets calmer.">
+    <title>Kidence — Big feelings, handled together</title>
+    <meta name="description" content="A kid-friendly wristband that sees the storm coming, hands you the right words in the moment, and turns every meltdown into practice — for you and your child.">
     <link rel="icon" type="image/png" href="favicon.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        ink: '#0E1116',
-                        paper: '#FAFAF7',
-                        rule: '#D8D5CE',
-                        mute: '#6C6A66',
-                        accent: '#2C4A6B',
-                        accentSoft: '#E6ECF3',
+                        'kidence-bg': '#FDFCFB',
+                        'kidence-offwhite': '#F5F2F0',
+                        'kidence-dark': '#2D2926',
+                        'kidence-muted': '#6B6661',
+                        'kidence-accent': '#D4A373',
+                        'kidence-accent-hover': '#BC8A5F',
+                        'kidence-pastel-blue': '#E3E9F2',
+                        'kidence-pastel-peach': '#F9EBE0',
+                        'kidence-pastel-mint': '#E8F3F1',
+                        'kidence-pastel-lilac': '#EDE9F6',
+                        'kidence-pastel-sun': '#FBF3DC',
                     },
                     fontFamily: {
-                        serif: ['Newsreader', 'Georgia', 'serif'],
-                        sans: ['Inter', 'system-ui', 'sans-serif'],
-                        mono: ['JetBrains Mono', 'ui-monospace', 'monospace'],
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif'],
                     },
-                    letterSpacing: {
-                        tightish: '-0.015em',
+                    animation: {
+                        'fade-in-up': 'fadeInUp 1s ease-out forwards',
+                        'float': 'float 6s ease-in-out infinite',
                     },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-15px)' },
+                        }
+                    }
                 }
             }
         }
     </script>
     <style>
-        body { -webkit-font-smoothing: antialiased; }
-        .rule-top { border-top: 1px solid #D8D5CE; }
-        .rule-bottom { border-bottom: 1px solid #D8D5CE; }
-        .eyebrow {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 11px;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            color: #6C6A66;
-        }
-        .lead { font-size: 1.2rem; line-height: 1.65; color: #2D2B27; }
-        .col-narrow { max-width: 680px; }
-        .col-text { max-width: 620px; }
-        .citation { font-variant-numeric: tabular-nums; }
-        details > summary { list-style: none; cursor: pointer; }
-        details > summary::-webkit-details-marker { display: none; }
-        .num-marker {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 10px;
-            letter-spacing: 0.12em;
-            color: #6C6A66;
+        .text-balance { text-wrap: balance; }
+        .phone-shot {
+            border-radius: 2rem;
+            box-shadow: 0 24px 60px -18px rgba(45, 41, 38, 0.28);
+            border: 6px solid #2D2926;
         }
     </style>
 </head>
-<body class="bg-paper text-ink font-sans">
+<body class="bg-kidence-bg text-kidence-dark font-sans selection:bg-kidence-accent selection:text-white">
 
-    <!-- Top bar -->
-    <header class="rule-bottom">
-        <div class="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
-            <a href="#" class="flex items-center gap-2 font-serif text-xl tracking-tightish">
-                <span class="inline-block w-2 h-2 rounded-full bg-accent"></span>
-                Kidence
-            </a>
-            <nav class="hidden md:flex items-center gap-8 text-sm text-mute">
-                <a href="#approach" class="hover:text-ink transition">Approach</a>
-                <a href="#populations" class="hover:text-ink transition">Families</a>
-                <a href="#online-learning" class="hover:text-ink transition">Online learning</a>
-                <a href="#research" class="hover:text-ink transition">Research</a>
-                <a href="#contact" class="hover:text-ink transition">Contact</a>
-                <a href="beta/" class="text-paper bg-ink px-4 py-2 hover:bg-accent transition-colors">Join the beta</a>
-            </nav>
+    <!-- Nav -->
+    <nav class="container mx-auto px-6 py-5 flex items-center justify-between">
+        <a href="#" class="font-display text-2xl font-semibold tracking-tight">kidence</a>
+        <a href="beta/" class="px-6 py-2.5 bg-kidence-dark text-white rounded-full text-sm font-medium hover:bg-kidence-accent transition-colors">
+            Join the beta
+        </a>
+    </nav>
+
+    <!-- Hero -->
+    <header class="container mx-auto px-6 pt-10 pb-24 md:pt-16">
+        <div class="flex flex-col lg:flex-row items-center gap-14">
+            <div class="w-full lg:w-1/2 space-y-7 text-center lg:text-left">
+                <span class="inline-block px-4 py-1.5 text-xs font-semibold tracking-widest uppercase bg-kidence-pastel-lilac rounded-full text-kidence-dark animate-fade-in-up">
+                    A parent learning system
+                </span>
+                <h1 class="font-display text-5xl md:text-7xl font-light tracking-tight leading-[1.05] text-balance animate-fade-in-up" style="animation-delay: .15s;">
+                    Big feelings,<br><span class="text-kidence-accent italic">handled together.</span>
+                </h1>
+                <p class="max-w-md mx-auto lg:mx-0 text-lg text-kidence-muted leading-relaxed animate-fade-in-up" style="animation-delay: .3s;">
+                    A kid-friendly wristband that sees the storm coming, hands you
+                    the right words in the moment — and turns every meltdown into
+                    practice, for you <em>and</em> your child.
+                </p>
+                <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 animate-fade-in-up" style="animation-delay: .45s;">
+                    <a href="beta/" class="px-9 py-4 bg-kidence-dark text-white rounded-full font-medium shadow-xl hover:bg-kidence-accent transition-all">
+                        Join the family beta
+                    </a>
+                    <span class="text-sm text-kidence-muted">Free for the first 50 families</span>
+                </div>
+            </div>
+            <div class="w-full lg:w-1/2 relative">
+                <div class="absolute -inset-8 bg-kidence-pastel-peach rounded-[3rem] blur-3xl opacity-60"></div>
+                <img src="assets/v1-image-0.png" alt="The Kidence wristband" class="relative w-full max-w-md mx-auto animate-float">
+            </div>
         </div>
     </header>
 
-    <!-- Hero -->
-    <section class="max-w-6xl mx-auto px-6 pt-24 pb-28 md:pt-32 md:pb-36">
-        <div class="grid grid-cols-12 gap-8">
-            <div class="col-span-12 md:col-span-2">
-                <span class="eyebrow">01 · Overview</span>
+    <!-- What it does — five cards, one line each -->
+    <section class="container mx-auto px-6 pb-24">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="p-8 rounded-3xl bg-kidence-pastel-blue/60 space-y-3">
+                <div class="text-4xl">🔮</div>
+                <h3 class="font-display text-xl font-semibold">Sees it coming</h3>
+                <p class="text-sm text-kidence-muted leading-relaxed">A gentle heads-up seconds before the boil-over — while the moment is still workable.</p>
             </div>
-            <div class="col-span-12 md:col-span-10 space-y-10">
-                <div class="flex flex-wrap gap-2">
-                    <span class="text-[11px] font-mono uppercase tracking-widest px-2.5 py-1 bg-ink text-paper rounded-full">A parent learning system</span>
-                    <span class="text-[11px] font-mono uppercase tracking-widest px-2.5 py-1 border border-accent text-accent rounded-full">Family beta · Now enrolling</span>
-                    <span class="text-[11px] font-mono uppercase tracking-widest px-2.5 py-1 border border-rule rounded-full text-mute">Paper under review · 2026</span>
-                </div>
-                <h1 class="font-serif font-light text-5xl md:text-7xl leading-[1.05] tracking-tightish text-balance max-w-4xl">
-                    Helping parents become better <span class="italic text-accent">emotion coaches</span> &mdash; one real moment at a time.
-                </h1>
-                <p class="lead col-text">
-                    Kidence pairs a kid&#8209;friendly wearable with an early&#8209;detection model that sees the storm building <em>ten seconds before it breaks</em>. In the moment, it hands you exactly one move and the words to say. Afterwards, you tell it what happened &mdash; and then you <strong>practice</strong>: the AI plays your child, you rehearse your response, and next time you're ready. We're not training the child. We're training the parent.
-                </p>
-                <div class="flex flex-wrap items-center gap-6 pt-2">
-                    <a href="beta/" class="inline-flex items-center gap-2 bg-ink text-paper px-6 py-3 text-sm font-medium hover:bg-accent transition-colors">
-                        Join the family beta
-                        <svg class="w-3.5 h-3.5" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-                    </a>
-                    <a href="#approach" class="text-sm text-mute hover:text-ink underline underline-offset-4 decoration-rule">Read the approach</a>
-                </div>
+            <div class="p-8 rounded-3xl bg-kidence-pastel-peach/60 space-y-3">
+                <div class="text-4xl">💬</div>
+                <h3 class="font-display text-xl font-semibold">The right words, right then</h3>
+                <p class="text-sm text-kidence-muted leading-relaxed">One move and one thing to say — chosen from what has actually worked for <em>your</em> kid.</p>
             </div>
-        </div>
-    </section>
-
-    <!-- Strap of facts -->
-    <section class="rule-top rule-bottom bg-paper">
-        <div class="max-w-6xl mx-auto px-6 py-10 grid grid-cols-2 md:grid-cols-4 gap-y-8 gap-x-8 text-sm">
-            <div>
-                <div class="num-marker mb-2">Lead time</div>
-                <div class="font-serif text-2xl tracking-tightish">≥ 10 s</div>
-                <div class="text-mute mt-1">Median pre&#8209;onset warning in pilot data.</div>
+            <div class="p-8 rounded-3xl bg-kidence-pastel-mint/60 space-y-3">
+                <div class="text-4xl">📈</div>
+                <h3 class="font-display text-xl font-semibold">Watch it get better</h3>
+                <p class="text-sm text-kidence-muted leading-relaxed">Fewer, shorter, gentler storms — tracked week over week, so you can see the progress.</p>
             </div>
-            <div>
-                <div class="num-marker mb-2">Signals</div>
-                <div class="font-serif text-2xl tracking-tightish">HR · EDA · IMU</div>
-                <div class="text-mute mt-1">25 Hz multimodal from a wrist&#8209;worn band.</div>
+            <div class="p-8 rounded-3xl bg-kidence-pastel-lilac/60 space-y-3">
+                <div class="text-4xl">🎭</div>
+                <h3 class="font-display text-xl font-semibold">Practice, like a coach</h3>
+                <p class="text-sm text-kidence-muted leading-relaxed">60 seconds in the evening: the AI plays your child, you rehearse your response out loud.</p>
             </div>
-            <div>
-                <div class="num-marker mb-2">Personalization</div>
-                <div class="font-serif text-2xl tracking-tightish">Continual</div>
-                <div class="text-mute mt-1">No batch retraining. The policy updates as you label.</div>
+            <div class="p-8 rounded-3xl bg-kidence-pastel-sun/60 space-y-3">
+                <div class="text-4xl">🐿️</div>
+                <h3 class="font-display text-xl font-semibold">Momo's Story Time</h3>
+                <p class="text-sm text-kidence-muted leading-relaxed">Today's hard moment becomes tonight's picture book — your child names the feeling through Momo the squirrel, and opens a sticker pack.</p>
             </div>
-            <div>
-                <div class="num-marker mb-2">Focus</div>
-                <div class="font-serif text-2xl tracking-tightish">Ages 3&ndash;12</div>
-                <div class="text-mute mt-1">Everyday storms, with clinical research roots.</div>
+            <div class="p-8 rounded-3xl bg-white border border-kidence-offwhite space-y-3">
+                <div class="text-4xl">⏱️</div>
+                <h3 class="font-display text-xl font-semibold">3 minutes a day</h3>
+                <p class="text-sm text-kidence-muted leading-relaxed">3 seconds during · 90 seconds after · 60 seconds in the evening. Everything else is automatic.</p>
             </div>
         </div>
     </section>
 
-    <!-- Approach -->
-    <section id="approach" class="max-w-6xl mx-auto px-6 py-28">
-        <div class="grid grid-cols-12 gap-8">
-            <div class="col-span-12 md:col-span-2">
-                <span class="eyebrow">02 · The loop</span>
+    <!-- App screenshots -->
+    <section class="bg-kidence-offwhite py-24">
+        <div class="container mx-auto px-6">
+            <div class="text-center max-w-xl mx-auto mb-16 space-y-3">
+                <h2 class="font-display text-4xl font-light">A quiet app for loud moments</h2>
+                <p class="text-kidence-muted">Real screens from the beta.</p>
             </div>
-            <div class="col-span-12 md:col-span-10 space-y-16">
-                <div class="col-narrow space-y-6">
-                    <h2 class="font-serif font-light text-4xl md:text-5xl leading-tight tracking-tightish">
-                        Detection tells you what happened. Learning changes what happens next.
-                    </h2>
-                    <p class="lead">
-                        Tonight's hard moment already contains everything you need for the next
-                        one &mdash; the early signals, the trigger, the words that actually helped.
-                        Most of it evaporates by morning. Kidence keeps it, and turns it into
-                        skill: detect &rarr; coach the parent &rarr; the parent gets better &rarr;
-                        the child gets better. The hardware's job is simply to make that
-                        learning automatic.
-                    </p>
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 max-w-5xl mx-auto items-start">
+                <div class="space-y-3 text-center">
+                    <img src="assets/shot-today.png" alt="Live regulation view" class="phone-shot w-full">
+                    <p class="text-xs text-kidence-muted font-medium">Live calm-to-storm view</p>
                 </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-px bg-rule rule-top rule-bottom">
-                    <div class="bg-paper p-8 space-y-3">
-                        <div class="num-marker">i. Monitor &mdash; zero effort</div>
-                        <h3 class="font-serif text-2xl tracking-tightish">A wearable that watches quietly</h3>
-                        <p class="text-sm text-mute leading-relaxed">A lightweight on&#8209;wrist model reads HR, EDA, motion and skin temperature against your child's own baseline, tracking a simple arousal &amp; regulation state &mdash; Calm, Elevated, High, Recovering. Nothing to do on an ordinary day.</p>
-                    </div>
-                    <div class="bg-paper p-8 space-y-3">
-                        <div class="num-marker">ii. Micro&#8209;coach &mdash; 3 seconds</div>
-                        <h3 class="font-serif text-2xl tracking-tightish">One move, and the words to say</h3>
-                        <p class="text-sm text-mute leading-relaxed">When arousal climbs, you get exactly one suggestion &mdash; <em>&ldquo;Crouch down. Say: you're really disappointed, I'm right here&rdquo;</em> &mdash; ranked by what has actually worked for <em>your</em> child. No menus, no typing, ignorable without penalty.</p>
-                    </div>
-                    <div class="bg-paper p-8 space-y-3">
-                        <div class="num-marker">iii. Review &mdash; 90 seconds</div>
-                        <h3 class="font-serif text-2xl tracking-tightish">Tell the story once</h3>
-                        <p class="text-sm text-mute leading-relaxed">After recovery, just talk: what happened, what you tried, how they reacted. Kidence turns it into structured evidence &mdash; triggers, feelings, what helped. Then, if your child is nearby: today's moment comes back as <em>Story Time</em> &mdash; a little picture book they finish with you.</p>
-                    </div>
-                    <div class="bg-paper p-8 space-y-3">
-                        <div class="num-marker">iv. Practice &mdash; 60 seconds</div>
-                        <h3 class="font-serif text-2xl tracking-tightish">Practice Together: the AI plays your child</h3>
-                        <p class="text-sm text-mute leading-relaxed">In the evening, one short rep built from today's real moment. The AI plays your child in character; you answer out loud; a coach scores the exchange and hands you a pocket plan. Then a twist &mdash; same trigger, new situation &mdash; so the skill generalizes.</p>
-                    </div>
+                <div class="space-y-3 text-center lg:translate-y-8">
+                    <img src="assets/shot-practice.png" alt="Practice Together" class="phone-shot w-full">
+                    <p class="text-xs text-kidence-muted font-medium">Practice — the AI plays your child</p>
                 </div>
-
-                <p class="text-sm text-mute leading-relaxed max-w-2xl">
-                    A day with Kidence: <span class="text-ink font-medium">3 seconds</span> during the storm ·
-                    <span class="text-ink font-medium">90 seconds</span> after ·
-                    <span class="text-ink font-medium">60 seconds</span> in the evening.
-                    Everything else is passive. Under the hood, a bounded, clinician&#8209;reviewable action library is
-                    re&#8209;ranked per child by a learning policy &mdash; alert #50 is not alert #1.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Online learning -->
-    <section id="online-learning" class="bg-ink text-paper">
-        <div class="max-w-6xl mx-auto px-6 py-28">
-            <div class="grid grid-cols-12 gap-8">
-                <div class="col-span-12 md:col-span-2">
-                    <span class="eyebrow" style="color:#9C9A95">03 · Online learning</span>
+                <div class="space-y-3 text-center">
+                    <img src="assets/shot-together.png" alt="Momo's story and sticker book" class="phone-shot w-full">
+                    <p class="text-xs text-kidence-muted font-medium">Momo's story &amp; the sticker book</p>
                 </div>
-                <div class="col-span-12 md:col-span-10 space-y-12">
-                    <h2 class="font-serif font-light text-4xl md:text-6xl leading-[1.08] tracking-tightish max-w-3xl">
-                        Continual learning, not snapshot training.
-                    </h2>
-                    <p class="lead col-text" style="color:#D6D2C9">
-                        Affect is non&#8209;stationary. The triggers, baselines, and effective responses for any given person drift across days, contexts, and developmental stages. A model trained once and frozen will degrade. Kidence's personalization model updates online with each new event and each piece of feedback, in the spirit of continual reinforcement learning &mdash; reweighting predictions and intervention rankings as evidence accumulates.
-                    </p>
-
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 pt-6">
-                        <div class="space-y-3">
-                            <div class="num-marker" style="color:#9C9A95">What updates online</div>
-                            <ul class="text-sm space-y-2.5" style="color:#D6D2C9">
-                                <li class="flex gap-3"><span class="text-accent font-mono">→</span><span>Per&#8209;user alert threshold and lead&#8209;time calibration.</span></li>
-                                <li class="flex gap-3"><span class="text-accent font-mono">→</span><span>Intervention policy &mdash; which response, in which context, for this child.</span></li>
-                                <li class="flex gap-3"><span class="text-accent font-mono">→</span><span>The parent's playbook: trigger categories (fairness, transitions, overwhelm) learned from every review, so practice scenarios train the skill, not the script.</span></li>
-                                <li class="flex gap-3"><span class="text-accent font-mono">→</span><span>Contextual priors: time of day, recent sleep, prior events.</span></li>
-                            </ul>
-                        </div>
-                        <div class="space-y-3">
-                            <div class="num-marker" style="color:#9C9A95">What stays fixed</div>
-                            <ul class="text-sm space-y-2.5" style="color:#D6D2C9">
-                                <li class="flex gap-3"><span class="text-accent font-mono">→</span><span>The base anomaly detector ships as a population&#8209;trained edge model, updated only by deliberate OTA release.</span></li>
-                                <li class="flex gap-3"><span class="text-accent font-mono">→</span><span>Clinician&#8209;approved intervention candidates remain bounded; the policy chooses among them, it does not generate them.</span></li>
-                                <li class="flex gap-3"><span class="text-accent font-mono">→</span><span>Safety constraints and escalation rules are not learned.</span></li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="pt-6 border-t border-white/15 max-w-3xl">
-                        <p class="font-serif italic text-xl leading-relaxed" style="color:#E9E5DC">
-                            &ldquo;The world is non&#8209;stationary; a learning system must therefore keep learning.&rdquo;
-                        </p>
-                        <p class="text-xs mt-3" style="color:#9C9A95">
-                            &mdash; framing inspired by recent work on continual reinforcement learning. Technical details in our manuscript (under review).
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Populations -->
-    <section id="populations" class="max-w-6xl mx-auto px-6 py-28">
-        <div class="grid grid-cols-12 gap-8">
-            <div class="col-span-12 md:col-span-2">
-                <span class="eyebrow">04 · Families</span>
-            </div>
-            <div class="col-span-12 md:col-span-10 space-y-12">
-                <div class="col-narrow space-y-4">
-                    <h2 class="font-serif font-light text-4xl md:text-5xl leading-tight tracking-tightish">
-                        Built for family life. Rooted in clinical research.
-                    </h2>
-                    <p class="text-mute leading-relaxed">
-                        The physiological precursors of a tantrum, a meltdown, and an anxious spiral overlap more than the labels suggest. We built the predictive core in clinical contexts &mdash; and we're bringing it to the moments families actually live.
-                    </p>
-                </div>
-
-                <div class="space-y-px bg-rule rule-top rule-bottom">
-                    <article class="bg-paper p-8 md:p-10 grid grid-cols-12 gap-6">
-                        <div class="col-span-12 md:col-span-3 num-marker">04.1 · Early warning · Ages 3&ndash;12</div>
-                        <div class="col-span-12 md:col-span-9 space-y-2">
-                            <h3 class="font-serif text-2xl md:text-3xl tracking-tightish">A cue before the boil&#8209;over</h3>
-                            <p class="text-mute leading-relaxed">Tantrums, meltdowns, bedtime battles, screen&#8209;time transitions, sibling conflict. The wearable notices the physiological build&#8209;up before behavior turns, and quietly cues the parent while the moment is still workable.</p>
-                        </div>
-                    </article>
-                    <article class="bg-paper p-8 md:p-10 grid grid-cols-12 gap-6">
-                        <div class="col-span-12 md:col-span-3 num-marker">04.2 · Parent coaching · In the moment &amp; between moments</div>
-                        <div class="col-span-12 md:col-span-9 space-y-2">
-                            <h3 class="font-serif text-2xl md:text-3xl tracking-tightish">What to say, what to do &mdash; and a place to rehearse it</h3>
-                            <p class="text-mute leading-relaxed">During the storm: one concrete, personalized suggestion &mdash; the words and moves most likely to work for this child, learned from what has actually helped before. Between storms: <em>Practice Together</em> &mdash; the AI plays your child in a scenario built from your real week, you rehearse your response out loud, and a coach sharpens it. Sixty seconds, never homework. You don't learn a new play during the game; you practice it the night before.</p>
-                        </div>
-                    </article>
-                    <article class="bg-paper p-8 md:p-10 grid grid-cols-12 gap-6">
-                        <div class="col-span-12 md:col-span-3 num-marker">04.3 · Self&#8209;regulation · With your child</div>
-                        <div class="col-span-12 md:col-span-9 space-y-2">
-                            <h3 class="font-serif text-2xl md:text-3xl tracking-tightish">Helping kids understand their feelings</h3>
-                            <p class="text-mute leading-relaxed">Every reviewed moment becomes <em>Story Time</em>: a two&#8209;minute picture book, generated from what actually happened, starring Pip the squirrel &mdash; whose acorn&#8209;telescope time just ended, whose tail puffed up like a storm cloud. Your child picks the face that matches Pip's feeling, then the one that matches their own (children say through a character what they can't say directly), breathes the storm down with Pip, and opens the night's sticker pack. Over time, the early cue becomes the child's own awareness &mdash; and moods grow more stable.</p>
-                        </div>
-                    </article>
-                    <article class="bg-paper p-8 md:p-10 grid grid-cols-12 gap-6">
-                        <div class="col-span-12 md:col-span-3 num-marker">04.4 · Clinical research</div>
-                        <div class="col-span-12 md:col-span-9 space-y-2">
-                            <h3 class="font-serif text-2xl md:text-3xl tracking-tightish">The same predictive substrate, in clinical contexts</h3>
-                            <p class="text-mute leading-relaxed">Our research continues with clinical partners across autism (pre&#8209;meltdown alerts for caregivers and BCBAs), panic disorder, and PTSD &mdash; the populations where we first validated that affective escalation announces itself physiologically before it surfaces.</p>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Research -->
-    <section id="research" class="bg-accentSoft">
-        <div class="max-w-6xl mx-auto px-6 py-28">
-            <div class="grid grid-cols-12 gap-8">
-                <div class="col-span-12 md:col-span-2">
-                    <span class="eyebrow">05 · Research</span>
-                </div>
-                <div class="col-span-12 md:col-span-10 space-y-12">
-                    <h2 class="font-serif font-light text-4xl md:text-5xl leading-tight tracking-tightish max-w-3xl">
-                        Built on the literature. Validated in the field.
-                    </h2>
-
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        <div class="space-y-3">
-                            <div class="num-marker">Manuscript</div>
-                            <p class="font-serif text-lg leading-snug">Predictive Detection of Affective Dysregulation from Multimodal Wrist&#8209;Worn Signals.</p>
-                            <p class="text-sm text-mute citation">Submitted, 2026. Preprint on request.</p>
-                        </div>
-                        <div class="space-y-3">
-                            <div class="num-marker">Data collection</div>
-                            <p class="font-serif text-lg leading-snug">Field study with labeled stress&#8209;onset events across pediatric and adult cohorts.</p>
-                            <p class="text-sm text-mute citation">iOS collector · C1 wristband · 25 Hz PPG, EDA, IMU.</p>
-                        </div>
-                        <div class="space-y-3">
-                            <div class="num-marker">Clinical partners</div>
-                            <p class="font-serif text-lg leading-snug">Working with BCBAs, anxiety&#8209;disorder clinicians, and VA&#8209;adjacent PTSD researchers.</p>
-                            <p class="text-sm text-mute">Pilots underway, 2026.</p>
-                        </div>
-                    </div>
+                <div class="space-y-3 text-center lg:translate-y-8">
+                    <img src="assets/shot-trends.png" alt="Trends" class="phone-shot w-full">
+                    <p class="text-xs text-kidence-muted font-medium">Fewer, shorter, gentler — tracked</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Beta CTA -->
-    <section class="bg-ink text-paper">
-        <div class="max-w-6xl mx-auto px-6 py-24">
-            <div class="grid grid-cols-12 gap-8">
-                <div class="col-span-12 md:col-span-2">
-                    <span class="eyebrow" style="color:#9C9A95">06 · Family beta</span>
-                </div>
-                <div class="col-span-12 md:col-span-10 space-y-8">
-                    <h2 class="font-serif font-light text-4xl md:text-6xl leading-[1.08] tracking-tightish max-w-3xl">
-                        The first 50 families shape what this becomes.
-                    </h2>
-                    <p class="lead col-text" style="color:#D6D2C9">
-                        Tantrums, meltdowns, bedtime battles, screen&#8209;time cliffs, sibling wars &mdash; if that's your evenings, we built this for you. Two weeks, free early access to the wristband and app, a coach in your pocket, and a real say in what we build next. Takes 3 minutes to tell us about your family.
-                    </p>
-                    <div class="flex flex-wrap items-center gap-5">
-                        <a href="beta/" class="inline-flex items-center gap-2 bg-paper text-ink px-8 py-3.5 text-sm font-medium hover:bg-accentSoft transition-colors">
-                            Join the family beta
-                            <svg class="w-3.5 h-3.5" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-                        </a>
-                        <a href="#contact" class="text-sm underline underline-offset-4 decoration-white/30 hover:decoration-white" style="color:#D6D2C9">
-                            Investor or clinician? Request the technical brief &rarr;
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact" class="max-w-6xl mx-auto px-6 py-28">
-        <div class="grid grid-cols-12 gap-8">
-            <div class="col-span-12 md:col-span-2">
-                <span class="eyebrow">07 · Contact</span>
-            </div>
-            <div class="col-span-12 md:col-span-10 space-y-10">
-                <h2 class="font-serif font-light text-4xl md:text-5xl leading-tight tracking-tightish max-w-3xl">
-                    For researchers, clinicians, and design partners.
+    <section class="container mx-auto px-6 py-24">
+        <div class="relative bg-kidence-dark rounded-[3rem] overflow-hidden p-12 md:p-20 text-center">
+            <div class="absolute -top-24 -right-24 w-72 h-72 bg-kidence-accent/30 rounded-full blur-3xl"></div>
+            <div class="absolute -bottom-24 -left-24 w-72 h-72 bg-kidence-pastel-blue/20 rounded-full blur-3xl"></div>
+            <div class="relative space-y-6">
+                <h2 class="font-display text-4xl md:text-5xl font-light text-white text-balance">
+                    The first 50 families shape Kidence.
                 </h2>
-                <p class="lead col-text">
-                    We are currently expanding pilot deployments and would like to hear from clinical sites, research groups working on continual learning or affective computing, and investors. Parents: the fastest way to reach us is the <a href="beta/" class="underline underline-offset-4 decoration-rule hover:text-accent">beta waitlist</a>.
+                <p class="max-w-lg mx-auto text-white/70">
+                    Two weeks, free early access to the wristband and app, and a
+                    real say in what we build. Three minutes to tell us about your family.
                 </p>
-                <form id="contact-form" onsubmit="handleContact(event); return false;" class="grid grid-cols-1 md:grid-cols-12 gap-4 max-w-2xl">
-                    <input id="contact-email" name="email" type="email" required placeholder="Email" class="md:col-span-7 px-4 py-3 bg-paper border border-rule focus:border-ink focus:outline-none text-sm">
-                    <select id="contact-role" name="userGroup" required class="md:col-span-5 px-4 py-3 bg-paper border border-rule focus:border-ink focus:outline-none text-sm text-ink">
-                        <option value="">Role…</option>
-                        <option value="Clinician">Clinician / BCBA</option>
-                        <option value="Researcher">Researcher</option>
-                        <option value="Veteran service organization">Veteran service organization</option>
-                        <option value="Parent">Parent / caregiver</option>
-                        <option value="Investor">Investor</option>
-                        <option value="Press">Press</option>
-                        <option value="Other">Other</option>
-                    </select>
-                    <button id="contact-submit" type="submit" class="md:col-span-12 mt-2 inline-flex items-center justify-center gap-2 bg-ink text-paper px-6 py-3 text-sm font-medium hover:bg-accent transition-colors disabled:opacity-60 disabled:cursor-wait">
-                        <span id="contact-submit-label">Request access</span>
-                        <svg class="w-3.5 h-3.5" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-                    </button>
-                </form>
-                <p id="contact-ack" class="text-sm text-accent hidden">Thank you &mdash; we&rsquo;ll be in touch.</p>
-                <p id="contact-err" class="text-sm text-red-600 hidden">Something went wrong. Please email <a class="underline" href="mailto:hello@kidence.ai">hello@kidence.ai</a> directly.</p>
+                <a href="beta/" class="inline-block px-10 py-4 bg-white text-kidence-dark hover:bg-kidence-accent hover:text-white transition-all duration-300 rounded-full font-medium shadow-xl">
+                    Join the beta waitlist
+                </a>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="rule-top">
-        <div class="max-w-6xl mx-auto px-6 py-10 flex flex-col md:flex-row justify-between gap-6 text-xs text-mute">
-            <div class="flex items-center gap-2">
-                <span class="inline-block w-1.5 h-1.5 rounded-full bg-accent"></span>
-                <span>Kidence Research · 2026</span>
-            </div>
-            <div class="flex flex-wrap gap-6">
-                <span>This is not a medical device. The system provides decision support; clinical judgment remains with licensed professionals.</span>
+    <footer class="container mx-auto px-6 pb-14">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-kidence-muted border-t border-kidence-offwhite pt-8">
+            <span>© 2026 Kidence · Built with clinical advisors · Not a medical device</span>
+            <div class="flex gap-6">
+                <a href="mailto:hello@kidence.ai" class="hover:text-kidence-dark transition">hello@kidence.ai</a>
+                <a href="mailto:hello@kidence.ai?subject=Technical%20brief%20request" class="hover:text-kidence-dark transition">Investors &amp; clinicians: technical brief</a>
             </div>
         </div>
     </footer>
-
-    <script>
-        const LOOPS_FORM_ENDPOINT = 'https://app.loops.so/api/newsletter-form/cmks0ppr912yw0i1glgwet7su';
-
-        async function handleContact(e) {
-            e.preventDefault();
-            const form = document.getElementById('contact-form');
-            const button = document.getElementById('contact-submit');
-            const label = document.getElementById('contact-submit-label');
-            const ack = document.getElementById('contact-ack');
-            const err = document.getElementById('contact-err');
-            const email = document.getElementById('contact-email').value.trim();
-            const role = document.getElementById('contact-role').value;
-
-            if (!email) return;
-
-            const originalLabel = label.textContent;
-            label.textContent = 'Sending…';
-            button.disabled = true;
-            err.classList.add('hidden');
-
-            try {
-                const params = new URLSearchParams();
-                params.append('email', email);
-                if (role) params.append('userGroup', role);
-
-                const response = await fetch(LOOPS_FORM_ENDPOINT, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                    body: params.toString()
-                });
-
-                if (response.ok) {
-                    form.style.display = 'none';
-                    ack.classList.remove('hidden');
-                } else {
-                    throw new Error('Loops returned ' + response.status);
-                }
-            } catch (error) {
-                console.error(error);
-                err.classList.remove('hidden');
-                label.textContent = originalLabel;
-                button.disabled = false;
-            }
-        }
-    </script>
 </body>
 </html>
