@@ -134,7 +134,7 @@
                 required: 'required', optional: 'optional', selectAll: 'select all that apply',
                 otherPlaceholder: 'Tell us more…',
                 childN: 'Child', agePlaceholder: 'Age range…', ageOptional: 'Age (optional)…', addChild: '+ Add another child',
-                errRequired: 'Please fill in the required fields (name, email, age, beta interest).',
+                errRequired: 'Please fill in all required fields (marked \'required\').',
                 errChild1: "Please select at least Child 1's age range.",
                 errSubmit: 'Something went wrong. Please try again, or email hello@kidence.ai.',
                 q: {
@@ -166,7 +166,7 @@
                 required: '必填', optional: '选填', selectAll: '可多选',
                 otherPlaceholder: '再说两句…',
                 childN: '孩子', agePlaceholder: '年龄段…', ageOptional: '年龄(选填)…', addChild: '+ 再加一个孩子',
-                errRequired: '请填写必填项(姓名、邮箱、孩子年龄、内测意愿)。',
+                errRequired: '请完成所有标注"必填"的题目。',
                 errChild1: '请至少选择孩子 1 的年龄段。',
                 errSubmit: '提交失败,请重试,或发邮件到 hello@kidence.ai。',
                 q: {
@@ -296,6 +296,9 @@
                     <div>${qhead(t('q').name, true)}${textInput('parent_name', 'text')}</div>
                     <div>${qhead(t('q').email, true)}${textInput('email', 'email', 'you@example.com')}</div>
                     <div>${qhead(t('q').age, true)}${pills('child_age_range', OPT.age, false)}${childrenAgesBlock()}</div>
+                    <div>${qhead(t('q').frequency, true)}${pills('episode_frequency', OPT.frequency, false)}</div>
+                    <div>${qhead(t('q').wearable, true)}${pills('wearable_willingness', OPT.wearable, false)}</div>
+                    <div>${qhead(t('q').payment, true)}${pills('payment_willingness', OPT.payment, false)}</div>
                     <div>${qhead(t('q').beta, true)}<p class="text-xs text-kidence-muted -mt-1 mb-3 leading-relaxed max-w-lg">${t('q').betaNote}</p>${pills('beta_interest', OPT.beta, false)}</div>
                 </div>`;
 
@@ -303,12 +306,9 @@
                 <div class="space-y-7">
                     <div>${qhead(t('q').situations, false, t('selectAll'))}${pills('hard_situations', OPT.situations, true)}
                         ${S.hard_situations.includes('Other') ? `<div class="mt-2">${textInput('hard_situations_other', 'text', t('otherPlaceholder'))}</div>` : ''}</div>
-                    <div>${qhead(t('q').frequency, false)}${pills('episode_frequency', OPT.frequency, false)}</div>
-                    <div>${qhead(t('q').wearable, false)}${pills('wearable_willingness', OPT.wearable, false)}</div>
                     <div>${qhead(t('q').logging, false)}${pills('logging_willingness', OPT.logging, false)}</div>
                     <div>${qhead(t('q').outcomes, false, t('selectAll'))}${pills('valuable_outcomes', OPT.outcomes, true)}
                         ${S.valuable_outcomes.includes('Other') ? `<div class="mt-2">${textInput('valuable_outcomes_other', 'text', t('otherPlaceholder'))}</div>` : ''}</div>
-                    <div>${qhead(t('q').payment, false)}${pills('payment_willingness', OPT.payment, false)}</div>
                     <div>${qhead(t('q').phone, false)}${textInput('phone', 'tel')}</div>
                     <div>${qhead(t('q').location, false)}<div class="grid grid-cols-2 gap-3">${textInput('country', 'text')}${textInput('state_region', 'text')}</div></div>
                     <div>${qhead(t('q').notes, false)}<textarea class="field" rows="3" oninput="S.additional_notes=this.value">${esc(S.additional_notes)}</textarea></div>
@@ -342,7 +342,7 @@
             e.preventDefault();
             document.getElementById('form-error').classList.add('hidden');
 
-            if (!S.parent_name.trim() || !/.+@.+\..+/.test(S.email.trim()) || !S.child_age_range || !S.beta_interest) {
+            if (!S.parent_name.trim() || !/.+@.+\..+/.test(S.email.trim()) || !S.child_age_range || !S.episode_frequency || !S.wearable_willingness || !S.payment_willingness || !S.beta_interest) {
                 showError(t('errRequired'));
                 return;
             }
