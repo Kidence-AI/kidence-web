@@ -4,518 +4,417 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Join the Kidence Family Beta</title>
-    <meta name="description" content="Kidence pairs a kid-friendly wearable and an early-detection model with in-the-moment parent coaching — catching emotional overwhelm early and helping kids understand their feelings. Join our early family beta.">
+    <meta name="description" content="Join the Kidence family beta — a kid-friendly wristband and parent coaching app for tantrums, meltdowns, and big feelings.">
     <link rel="icon" type="image/png" href="../favicon.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        ink: '#0E1116',
-                        paper: '#FAFAF7',
-                        rule: '#D8D5CE',
-                        mute: '#6C6A66',
-                        accent: '#2C4A6B',
-                        accentSoft: '#E6ECF3',
+                        'kidence-bg': '#FDFCFB',
+                        'kidence-offwhite': '#F5F2F0',
+                        'kidence-dark': '#2D2926',
+                        'kidence-muted': '#6B6661',
+                        'kidence-accent': '#D4A373',
+                        'kidence-accent-hover': '#BC8A5F',
+                        'kidence-pastel-blue': '#E3E9F2',
+                        'kidence-pastel-peach': '#F9EBE0',
+                        'kidence-pastel-mint': '#E8F3F1',
+                        'kidence-pastel-lilac': '#EDE9F6',
                     },
                     fontFamily: {
-                        serif: ['Newsreader', 'Georgia', 'serif'],
-                        sans: ['Inter', 'system-ui', 'sans-serif'],
-                        mono: ['JetBrains Mono', 'ui-monospace', 'monospace'],
-                    },
-                    letterSpacing: {
-                        tightish: '-0.015em',
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif'],
                     },
                 }
             }
         }
     </script>
     <style>
-        body { -webkit-font-smoothing: antialiased; }
-        .rule-top { border-top: 1px solid #D8D5CE; }
-        .rule-bottom { border-bottom: 1px solid #D8D5CE; }
-        .eyebrow {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 11px;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            color: #6C6A66;
-        }
-        .lead { font-size: 1.2rem; line-height: 1.65; color: #2D2B27; }
-        .num-marker {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 10px;
-            letter-spacing: 0.12em;
-            color: #6C6A66;
-        }
-        .q-label { font-family: 'Newsreader', Georgia, serif; font-size: 1.25rem; letter-spacing: -0.015em; }
         .field {
             width: 100%;
-            padding: 0.75rem 1rem;
-            background: #FAFAF7;
-            border: 1px solid #D8D5CE;
-            font-size: 0.875rem;
+            padding: 0.8rem 1.1rem;
+            background: white;
+            border: 1.5px solid #F5F2F0;
+            border-radius: 1rem;
+            font-size: 0.9rem;
         }
-        .field:focus { outline: none; border-color: #0E1116; }
-        .pill input { position: absolute; opacity: 0; pointer-events: none; }
-        .pill span {
-            display: inline-block;
-            padding: 0.625rem 1rem;
-            border: 1px solid #D8D5CE;
-            font-size: 0.875rem;
-            color: #0E1116;
-            background: #FAFAF7;
+        .field:focus { outline: none; border-color: #D4A373; }
+        .pill {
+            padding: 0.6rem 1rem;
+            border-radius: 9999px;
+            border: 1.5px solid #F5F2F0;
+            background: white;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #2D2926;
             cursor: pointer;
-            transition: border-color .15s, background-color .15s;
+            transition: all .15s;
             user-select: none;
         }
-        .pill span:hover { border-color: #6C6A66; }
-        .pill input:checked + span {
-            border-color: #2C4A6B;
-            background: #E6ECF3;
-            color: #2C4A6B;
+        .pill:hover { border-color: #D4A373; }
+        .pill.on {
+            background: #D4A373;
+            border-color: #D4A373;
+            color: white;
         }
-        .pill input:focus-visible + span { outline: 2px solid #2C4A6B; outline-offset: 2px; }
         .hp-field { position: absolute; left: -9999px; top: -9999px; height: 0; width: 0; overflow: hidden; }
     </style>
 </head>
-<body class="bg-paper text-ink font-sans">
+<body class="bg-kidence-bg text-kidence-dark font-sans selection:bg-kidence-accent selection:text-white">
 
-    <!-- Top bar -->
-    <header class="rule-bottom">
-        <div class="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
-            <a href="../" class="flex items-center gap-2 font-serif text-xl tracking-tightish">
-                <span class="inline-block w-2 h-2 rounded-full bg-accent"></span>
-                Kidence
-            </a>
-            <a href="../" class="text-sm text-mute hover:text-ink transition">&larr; Back to kidence.ai</a>
-        </div>
-    </header>
+    <nav class="container mx-auto px-6 py-5 flex items-center justify-between">
+        <a href="../" class="font-display text-2xl font-semibold tracking-tight">kidence</a>
+        <button id="lang-toggle" onclick="toggleLang()" class="px-4 py-2 rounded-full border-1.5 border border-kidence-offwhite bg-white text-sm font-medium hover:border-kidence-accent transition">中文</button>
+    </nav>
 
-    <!-- Intro -->
-    <section class="max-w-3xl mx-auto px-6 pt-16 pb-10 md:pt-24">
-        <div class="space-y-8">
-            <div class="flex flex-wrap gap-2">
-                <span class="text-[11px] font-mono uppercase tracking-widest px-2.5 py-1 border border-accent text-accent rounded-full">Family beta · Now enrolling</span>
-                <span class="text-[11px] font-mono uppercase tracking-widest px-2.5 py-1 border border-rule rounded-full text-mute">3–5 minutes</span>
-            </div>
-            <h1 class="font-serif font-light text-4xl md:text-6xl leading-[1.08] tracking-tightish">
-                Join the Kidence <span class="italic text-accent">family beta</span>.
-            </h1>
-            <div class="space-y-4">
-                <p class="lead">
-                    Kidence pairs a kid&#8209;friendly wearable with an early&#8209;detection model that notices the physiological signs of emotional overwhelm before things boil over &mdash; tantrums, meltdowns, frustration, anxiety, and tough transitions.
-                </p>
-                <p class="text-mute leading-relaxed">
-                    When an early signal appears, Kidence coaches you on what to say and do in the moment, and helps your child learn to recognize and understand their own feelings &mdash; so hard moments get caught earlier, pass faster, and moods become more stable over time.
-                </p>
-                <p class="text-mute leading-relaxed">
-                    We are inviting a small group of families into our early beta. The beta may include a lightweight wearable, short parent check&#8209;ins, and optional notes about emotional outbursts or difficult routines.
-                </p>
-                <p class="text-sm text-mute leading-relaxed">
-                    This is not a medical device, diagnosis tool, or therapy service. We are learning from families and testing whether real&#8209;time signals and parent coaching can help reduce the frequency, intensity, or duration of difficult emotional moments.
-                </p>
-            </div>
-        </div>
-    </section>
+    <main class="container mx-auto px-6 pb-24 max-w-2xl">
+        <!-- Intro -->
+        <header class="pt-8 pb-10 space-y-4">
+            <span class="inline-block px-4 py-1.5 text-xs font-semibold tracking-widest uppercase bg-kidence-pastel-lilac rounded-full" data-t="badge"></span>
+            <h1 class="font-display text-4xl md:text-5xl font-light tracking-tight" data-t="title"></h1>
+            <p class="text-kidence-muted leading-relaxed" data-t="intro"></p>
+            <p class="text-xs text-kidence-muted" data-t="disclaimer"></p>
+        </header>
 
-    <!-- Success panel (hidden until submit) -->
-    <section id="success-panel" class="hidden max-w-3xl mx-auto px-6 pb-28">
-        <div class="rule-top pt-10 space-y-4">
-            <div class="num-marker">Submitted</div>
-            <h2 class="font-serif font-light text-3xl md:text-4xl tracking-tightish">You&rsquo;re on the list. Thank you.</h2>
-            <p class="text-mute leading-relaxed max-w-xl">
-                We&rsquo;ll reach out by email as beta spots open. If you know another parent dealing
-                with tantrums or meltdowns, sharing this page with them genuinely helps us build the right thing:
-            </p>
-            <p class="font-mono text-sm text-accent">kidence.ai/beta</p>
-        </div>
-    </section>
+        <!-- Success -->
+        <section id="success" class="hidden bg-white rounded-3xl p-10 text-center space-y-4 shadow-sm">
+            <div class="text-5xl">🎉</div>
+            <h2 class="font-display text-3xl font-light" data-t="thanksTitle"></h2>
+            <p class="text-kidence-muted" data-t="thanksBody"></p>
+            <p class="font-mono text-sm text-kidence-accent">kidence.ai/beta</p>
+        </section>
 
-    <!-- Form -->
-    <section id="form-section" class="max-w-3xl mx-auto px-6 pb-28">
-        <form id="beta-form" novalidate class="space-y-12">
-
-            <!-- Honeypot: humans never see or fill this -->
+        <!-- Form (rendered by JS) -->
+        <form id="beta-form" novalidate class="space-y-10">
             <div class="hp-field" aria-hidden="true">
-                <label>Website <input type="text" name="website" id="hp-website" tabindex="-1" autocomplete="off"></label>
+                <label>Website <input type="text" id="hp-website" tabindex="-1" autocomplete="off"></label>
             </div>
-
-            <div class="rule-top pt-10 space-y-8">
-                <div class="num-marker">About you</div>
-
-                <div class="space-y-2">
-                    <label for="parent_name" class="q-label">1. Parent / caregiver name <span class="text-accent">*</span></label>
-                    <input id="parent_name" class="field" type="text" autocomplete="name" placeholder="Your name">
-                </div>
-
-                <div class="space-y-2">
-                    <label for="email" class="q-label">2. Email address <span class="text-accent">*</span></label>
-                    <input id="email" class="field" type="email" autocomplete="email" placeholder="you@example.com">
-                </div>
-
-                <div class="space-y-2">
-                    <label for="phone" class="q-label">3. Phone number</label>
-                    <p class="text-sm text-mute">Optional</p>
-                    <input id="phone" class="field" type="tel" autocomplete="tel" placeholder="(555) 555-5555">
-                </div>
-
-                <div class="space-y-2">
-                    <span class="q-label block">4. Where are you located?</span>
-                    <p class="text-sm text-mute">Optional &mdash; country and state/region only, for beta logistics</p>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        <input id="country" class="field" type="text" autocomplete="country-name" placeholder="Country">
-                        <input id="state_region" class="field" type="text" autocomplete="address-level1" placeholder="State / region">
-                    </div>
-                </div>
+            <div id="essentials"></div>
+            <div class="pt-2">
+                <h2 class="font-display text-2xl font-light mb-1" data-t="optionalTitle"></h2>
+                <p class="text-sm text-kidence-muted mb-6" data-t="optionalHint"></p>
+                <div id="optional"></div>
             </div>
-
-            <div class="rule-top pt-10 space-y-8">
-                <div class="num-marker">Your family</div>
-
-                <fieldset class="space-y-3">
-                    <legend class="q-label">5. Child&rsquo;s age range <span class="text-accent">*</span></legend>
-                    <div id="child_age_range" class="flex flex-wrap gap-2">
-                        <label class="pill"><input type="radio" name="child_age_range" value="2-3"><span>2&ndash;3</span></label>
-                        <label class="pill"><input type="radio" name="child_age_range" value="4-5"><span>4&ndash;5</span></label>
-                        <label class="pill"><input type="radio" name="child_age_range" value="6-7"><span>6&ndash;7</span></label>
-                        <label class="pill"><input type="radio" name="child_age_range" value="8-10"><span>8&ndash;10</span></label>
-                        <label class="pill"><input type="radio" name="child_age_range" value="11-12"><span>11&ndash;12</span></label>
-                        <label class="pill"><input type="radio" name="child_age_range" value="multiple"><span>Multiple children</span></label>
-                    </div>
-                    <div id="multi-children-block" class="hidden space-y-2 pt-2">
-                        <p class="text-sm text-mute">Great — what are their age ranges? (Child 1 required, the rest optional)</p>
-                        <div id="children-ages-list" class="space-y-2"></div>
-                        <button type="button" id="add-child-btn" class="text-sm text-accent underline underline-offset-4 decoration-rule">+ Add another child</button>
-                    </div>
-                </fieldset>
-
-                <fieldset class="space-y-3">
-                    <legend class="q-label">6. Which situations are hardest for your family right now? <span class="text-accent">*</span></legend>
-                    <p class="text-sm text-mute">Select all that apply</p>
-                    <div id="hard_situations" class="flex flex-wrap gap-2">
-                        <label class="pill"><input type="checkbox" name="hard_situations" value="Tantrums / meltdowns"><span>Tantrums / meltdowns</span></label>
-                        <label class="pill"><input type="checkbox" name="hard_situations" value="Anger or frustration"><span>Anger or frustration</span></label>
-                        <label class="pill"><input type="checkbox" name="hard_situations" value="Homework struggles"><span>Homework struggles</span></label>
-                        <label class="pill"><input type="checkbox" name="hard_situations" value="Bedtime battles"><span>Bedtime battles</span></label>
-                        <label class="pill"><input type="checkbox" name="hard_situations" value="Morning routine"><span>Morning routine</span></label>
-                        <label class="pill"><input type="checkbox" name="hard_situations" value="Screen time transitions"><span>Screen time transitions</span></label>
-                        <label class="pill"><input type="checkbox" name="hard_situations" value="Sibling conflict"><span>Sibling conflict</span></label>
-                        <label class="pill"><input type="checkbox" name="hard_situations" value="Separation anxiety / drop-off"><span>Separation anxiety / drop&#8209;off</span></label>
-                        <label class="pill"><input type="checkbox" name="hard_situations" value="Sensory overwhelm"><span>Sensory overwhelm</span></label>
-                        <label class="pill"><input type="checkbox" name="hard_situations" value="Anxiety / worries"><span>Anxiety / worries</span></label>
-                        <label class="pill"><input type="checkbox" name="hard_situations" value="Other"><span>Other</span></label>
-                    </div>
-                    <input id="hard_situations_other" class="field hidden" type="text" placeholder="Tell us more">
-                </fieldset>
-
-                <fieldset class="space-y-3">
-                    <legend class="q-label">7. How often do difficult emotional episodes happen? <span class="text-accent">*</span></legend>
-                    <div id="episode_frequency" class="flex flex-wrap gap-2">
-                        <label class="pill"><input type="radio" name="episode_frequency" value="multiple_daily"><span>Multiple times per day</span></label>
-                        <label class="pill"><input type="radio" name="episode_frequency" value="daily"><span>About once a day</span></label>
-                        <label class="pill"><input type="radio" name="episode_frequency" value="few_weekly"><span>A few times per week</span></label>
-                        <label class="pill"><input type="radio" name="episode_frequency" value="weekly"><span>About once a week</span></label>
-                        <label class="pill"><input type="radio" name="episode_frequency" value="less"><span>Less than once a week</span></label>
-                    </div>
-                </fieldset>
-
-                <div class="space-y-2">
-                    <label for="episode_description" class="q-label">8. What usually happens during these moments?</label>
-                    <p class="text-sm text-mute">Optional &mdash; a sentence or two is plenty</p>
-                    <textarea id="episode_description" class="field" rows="3" placeholder="e.g., screaming, hitting, refusing to move on from an activity..."></textarea>
-                </div>
-
-                <div class="space-y-2">
-                    <label for="what_tried" class="q-label">9. What have you already tried?</label>
-                    <p class="text-sm text-mute">Optional</p>
-                    <textarea id="what_tried" class="field" rows="3" placeholder="e.g., timers, countdowns, timeouts, parenting books, therapy..."></textarea>
-                </div>
-            </div>
-
-            <div class="rule-top pt-10 space-y-8">
-                <div class="num-marker">The beta</div>
-
-                <fieldset class="space-y-3">
-                    <legend class="q-label">10. Would you be open to your child using a lightweight wearable during the beta? <span class="text-accent">*</span></legend>
-                    <div id="wearable_willingness" class="flex flex-wrap gap-2">
-                        <label class="pill"><input type="radio" name="wearable_willingness" value="yes"><span>Yes</span></label>
-                        <label class="pill"><input type="radio" name="wearable_willingness" value="maybe"><span>Maybe</span></label>
-                        <label class="pill"><input type="radio" name="wearable_willingness" value="no"><span>No</span></label>
-                        <label class="pill"><input type="radio" name="wearable_willingness" value="learn_more"><span>I&rsquo;d like to learn more first</span></label>
-                    </div>
-                </fieldset>
-
-                <fieldset class="space-y-3">
-                    <legend class="q-label">11. Would you be willing to spend 1 minute after an emotional episode logging what happened? <span class="text-accent">*</span></legend>
-                    <div id="logging_willingness" class="flex flex-wrap gap-2">
-                        <label class="pill"><input type="radio" name="logging_willingness" value="yes"><span>Yes</span></label>
-                        <label class="pill"><input type="radio" name="logging_willingness" value="maybe"><span>Maybe</span></label>
-                        <label class="pill"><input type="radio" name="logging_willingness" value="no"><span>No</span></label>
-                    </div>
-                </fieldset>
-
-                <fieldset class="space-y-3">
-                    <legend class="q-label">12. What would make this product valuable enough for you to keep using?</legend>
-                    <p class="text-sm text-mute">Select all that apply</p>
-                    <div id="valuable_outcomes" class="flex flex-wrap gap-2">
-                        <label class="pill"><input type="checkbox" name="valuable_outcomes" value="Earlier warning before a meltdown"><span>Earlier warning before a meltdown</span></label>
-                        <label class="pill"><input type="checkbox" name="valuable_outcomes" value="Help knowing what to say in the moment"><span>Help knowing what to say in the moment</span></label>
-                        <label class="pill"><input type="checkbox" name="valuable_outcomes" value="Shorter tantrums / meltdowns"><span>Shorter tantrums / meltdowns</span></label>
-                        <label class="pill"><input type="checkbox" name="valuable_outcomes" value="Better understanding of triggers"><span>Better understanding of triggers</span></label>
-                        <label class="pill"><input type="checkbox" name="valuable_outcomes" value="Less yelling or parent stress"><span>Less yelling or parent stress</span></label>
-                        <label class="pill"><input type="checkbox" name="valuable_outcomes" value="Better bedtime / morning routine"><span>Better bedtime / morning routine</span></label>
-                        <label class="pill"><input type="checkbox" name="valuable_outcomes" value="Better sibling conflict support"><span>Better sibling conflict support</span></label>
-                        <label class="pill"><input type="checkbox" name="valuable_outcomes" value="Better child self-regulation skills"><span>Better child self&#8209;regulation skills</span></label>
-                        <label class="pill"><input type="checkbox" name="valuable_outcomes" value="Other"><span>Other</span></label>
-                    </div>
-                    <input id="valuable_outcomes_other" class="field hidden" type="text" placeholder="Tell us more">
-                </fieldset>
-
-                <fieldset class="space-y-3">
-                    <legend class="q-label">13. If Kidence worked well for your family, would you consider paying for it? <span class="text-accent">*</span></legend>
-                    <div id="payment_willingness" class="flex flex-wrap gap-2">
-                        <label class="pill"><input type="radio" name="payment_willingness" value="yes_10_15"><span>Yes, $10&ndash;15/month</span></label>
-                        <label class="pill"><input type="radio" name="payment_willingness" value="yes_15_25"><span>Yes, $15&ndash;25/month</span></label>
-                        <label class="pill"><input type="radio" name="payment_willingness" value="device_only"><span>Yes, but only a one&#8209;time device purchase</span></label>
-                        <label class="pill"><input type="radio" name="payment_willingness" value="maybe"><span>Maybe</span></label>
-                        <label class="pill"><input type="radio" name="payment_willingness" value="no"><span>No</span></label>
-                    </div>
-                </fieldset>
-
-                <fieldset class="space-y-3">
-                    <legend class="q-label">14. Would you like us to contact you about participating in Kidence&rsquo;s 2&#8209;week Beta Program? <span class="text-accent">*</span></legend>
-                    <p class="text-sm text-mute leading-relaxed max-w-xl">
-                        Participants receive free early access to the Kidence wristband and app,
-                        use the system for two weeks, and share feedback to help us improve early
-                        detection and personalized support for families. We will contact eligible
-                        families with additional details.
-                    </p>
-                    <div id="beta_interest" class="flex flex-wrap gap-2">
-                        <label class="pill"><input type="radio" name="beta_interest" value="yes_asap"><span>Yes, as soon as possible</span></label>
-                        <label class="pill"><input type="radio" name="beta_interest" value="yes_later"><span>Yes, but later</span></label>
-                        <label class="pill"><input type="radio" name="beta_interest" value="maybe"><span>Maybe</span></label>
-                        <label class="pill"><input type="radio" name="beta_interest" value="not_now"><span>Not right now</span></label>
-                    </div>
-                </fieldset>
-
-                <div class="space-y-2">
-                    <label for="additional_notes" class="q-label">15. Anything else you want us to know?</label>
-                    <p class="text-sm text-mute">Optional</p>
-                    <textarea id="additional_notes" class="field" rows="3"></textarea>
-                </div>
-            </div>
-
-            <div class="rule-top pt-8 space-y-6">
-                <p id="form-error" class="hidden text-sm text-red-700 border border-red-200 bg-red-50 px-4 py-3"></p>
-                <p class="text-xs text-mute leading-relaxed max-w-xl">
-                    By submitting this form, I agree that Kidence may contact me about the beta.
-                    I understand this is an early research/beta product and is not a medical,
-                    diagnostic, or therapy service.
-                </p>
-                <button id="submit-btn" type="submit" class="inline-flex items-center gap-2 bg-ink text-paper px-8 py-3.5 text-sm font-medium hover:bg-accent transition-colors disabled:opacity-60 disabled:cursor-wait">
-                    <span id="submit-label">Join the beta waitlist</span>
-                    <svg class="w-3.5 h-3.5" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+            <div class="space-y-5">
+                <p id="form-error" class="hidden text-sm text-red-700 bg-red-50 rounded-2xl px-5 py-3"></p>
+                <p class="text-xs text-kidence-muted leading-relaxed" data-t="consent"></p>
+                <button id="submit-btn" type="submit" class="w-full sm:w-auto px-10 py-4 bg-kidence-dark text-white rounded-full font-medium shadow-xl hover:bg-kidence-accent transition-all">
+                    <span data-t="submit"></span>
                 </button>
             </div>
         </form>
-    </section>
+    </main>
 
-    <!-- Footer -->
-    <footer class="rule-top">
-        <div class="max-w-6xl mx-auto px-6 py-10 flex flex-col md:flex-row justify-between gap-6 text-xs text-mute">
-            <div class="flex items-center gap-2">
-                <span class="inline-block w-1.5 h-1.5 rounded-full bg-accent"></span>
-                <span>Kidence Research · 2026</span>
-            </div>
-            <div class="flex flex-wrap gap-6">
-                <span>This is not a medical device, diagnosis tool, or therapy service.</span>
-            </div>
-        </div>
-    </footer>
+    <footer class="container mx-auto px-6 pb-10 text-center text-xs text-kidence-muted" data-t="footer"></footer>
 
     <script>
-        // ── Supabase config ─────────────────────────────────────────────
-        // Paste from: Supabase dashboard → your project → Settings → API.
-        // The anon key is safe to publish: the beta_waitlist table is
-        // insert-only for the public (RLS) — nobody can read data with it.
-        const SUPABASE_URL = 'https://ljrdfkjhezldpmevctgt.supabase.co';      // e.g. https://abcdefgh.supabase.co
+        // ── Supabase (public insert-only; RLS blocks all reads) ─────────
+        const SUPABASE_URL = 'https://ljrdfkjhezldpmevctgt.supabase.co';
         const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxqcmRma2poZXpsZHBtZXZjdGd0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUxMTI4MzYsImV4cCI6MjA5MDY4ODgzNn0.MqdozIW4o0nA4jc_Hd9_g1AGffssToPZZNXYdpnSzOs';
-        // ────────────────────────────────────────────────────────────────
 
-        const form = document.getElementById('beta-form');
-        const errorBox = document.getElementById('form-error');
-        const submitBtn = document.getElementById('submit-btn');
-        const submitLabel = document.getElementById('submit-label');
+        // ── i18n ─────────────────────────────────────────────────────────
+        const T = {
+            en: {
+                badge: 'Family beta · Now enrolling',
+                title: 'Join the family beta',
+                intro: 'A kid-friendly wristband + a coaching app for tantrums, meltdowns, and big feelings. The essentials take one minute — everything else is optional but helps us build it right.',
+                disclaimer: 'Not a medical device, diagnosis tool, or therapy service.',
+                optionalTitle: 'Help us build it right',
+                optionalHint: 'All optional — answer whatever you like.',
+                consent: 'By submitting, you agree that Kidence may contact you about the beta. Early research/beta product — not a medical, diagnostic, or therapy service.',
+                submit: 'Join the beta waitlist',
+                thanksTitle: "You're on the list!",
+                thanksBody: "We'll reach out as beta spots open. Know another parent in the trenches? Share this page — it genuinely helps.",
+                footer: '© 2026 Kidence',
+                required: 'required', optional: 'optional', selectAll: 'select all that apply',
+                otherPlaceholder: 'Tell us more…',
+                childN: 'Child', agePlaceholder: 'Age range…', ageOptional: 'Age (optional)…', addChild: '+ Add another child',
+                errRequired: 'Please fill in the required fields (name, email, age, beta interest).',
+                errChild1: "Please select at least Child 1's age range.",
+                errSubmit: 'Something went wrong. Please try again, or email hello@kidence.ai.',
+                q: {
+                    name: 'Your name', email: 'Email', age: "Child's age",
+                    beta: "Want to join the 2-week beta program?",
+                    betaNote: 'Free early access to the wristband and app for two weeks — your feedback shapes what we build. We contact eligible families with details.',
+                    situations: 'Which situations are hardest right now?',
+                    frequency: 'How often do hard moments happen?',
+                    wearable: 'Open to your child wearing a lightweight band?',
+                    logging: 'Willing to spend 1 minute logging after a moment?',
+                    outcomes: 'What would make Kidence worth keeping?',
+                    payment: 'If it worked well, would you pay for it?',
+                    phone: 'Phone', location: 'Country & state/region',
+                    notes: 'Anything else?',
+                },
+            },
+            zh: {
+                badge: '家庭内测 · 招募中',
+                title: '加入家庭内测',
+                intro: '一只儿童友好的手环 + 一个帮家长应对发脾气、崩溃大哭等大情绪的教练 App。必填部分一分钟填完,其余选填 — 但每一题都能帮我们把产品做对。',
+                disclaimer: '本产品不是医疗器械、诊断工具或治疗服务。',
+                optionalTitle: '帮我们做得更好',
+                optionalHint: '以下全部选填,想答哪题答哪题。',
+                consent: '提交即表示同意 Kidence 就内测事宜与您联系。这是早期研究/内测产品,不构成医疗、诊断或治疗服务。',
+                submit: '加入内测等候名单',
+                thanksTitle: '登记成功!',
+                thanksBody: '内测名额开放时我们会邮件联系您。身边有同样在"渡劫"的家长?把这个页面分享给 TA,对我们帮助很大。',
+                footer: '© 2026 Kidence',
+                required: '必填', optional: '选填', selectAll: '可多选',
+                otherPlaceholder: '再说两句…',
+                childN: '孩子', agePlaceholder: '年龄段…', ageOptional: '年龄(选填)…', addChild: '+ 再加一个孩子',
+                errRequired: '请填写必填项(姓名、邮箱、孩子年龄、内测意愿)。',
+                errChild1: '请至少选择孩子 1 的年龄段。',
+                errSubmit: '提交失败,请重试,或发邮件到 hello@kidence.ai。',
+                q: {
+                    name: '您的称呼', email: '邮箱', age: '孩子年龄',
+                    beta: '想参加为期两周的内测吗?',
+                    betaNote: '免费获得手环和 App 两周的早期使用权,您的反馈直接决定我们做什么。符合条件的家庭我们会联系并说明细节。',
+                    situations: '现在哪些场景最难熬?',
+                    frequency: '难熬的时刻多久来一次?',
+                    wearable: '愿意让孩子戴一只轻便手环吗?',
+                    logging: '愿意在事后花 1 分钟记录一下吗?',
+                    outcomes: '什么样的效果会让您一直用下去?',
+                    payment: '如果确实有效,愿意付费吗?',
+                    phone: '电话', location: '国家和省/州',
+                    notes: '还有什么想告诉我们?',
+                },
+            },
+        };
 
-        // Multiple children: per-child age selects (Child 1 required)
-        const AGE_OPTIONS = ['2-3', '4-5', '6-7', '8-10', '11-12'];
-        const MAX_CHILDREN = 6;
-        const childrenList = document.getElementById('children-ages-list');
+        const OPT = {
+            age: [
+                { v: '2-3', en: '2–3', zh: '2–3 岁' }, { v: '4-5', en: '4–5', zh: '4–5 岁' },
+                { v: '6-7', en: '6–7', zh: '6–7 岁' }, { v: '8-10', en: '8–10', zh: '8–10 岁' },
+                { v: '11-12', en: '11–12', zh: '11–12 岁' }, { v: 'multiple', en: 'Multiple children', zh: '多个孩子' },
+            ],
+            beta: [
+                { v: 'yes_asap', en: 'Yes, ASAP', zh: '想,越快越好' }, { v: 'yes_later', en: 'Yes, but later', zh: '想,但晚一点' },
+                { v: 'maybe', en: 'Maybe', zh: '再想想' }, { v: 'not_now', en: 'Not right now', zh: '暂时不了' },
+            ],
+            situations: [
+                { v: 'Tantrums / meltdowns', en: 'Tantrums / meltdowns', zh: '发脾气/崩溃大哭' },
+                { v: 'Anger or frustration', en: 'Anger & frustration', zh: '愤怒与挫败' },
+                { v: 'Homework struggles', en: 'Homework', zh: '写作业' },
+                { v: 'Bedtime battles', en: 'Bedtime', zh: '睡觉大战' },
+                { v: 'Morning routine', en: 'Mornings', zh: '早上出门' },
+                { v: 'Screen time transitions', en: 'Ending screen time', zh: '停止看屏幕' },
+                { v: 'Sibling conflict', en: 'Sibling conflict', zh: '手足矛盾' },
+                { v: 'Separation anxiety / drop-off', en: 'Drop-off / separation', zh: '分离焦虑' },
+                { v: 'Sensory overwhelm', en: 'Sensory overwhelm', zh: '感官过载' },
+                { v: 'Anxiety / worries', en: 'Anxiety / worries', zh: '焦虑担忧' },
+                { v: 'Other', en: 'Other', zh: '其他' },
+            ],
+            frequency: [
+                { v: 'multiple_daily', en: 'Several times a day', zh: '一天好几次' },
+                { v: 'daily', en: 'About daily', zh: '差不多每天' },
+                { v: 'few_weekly', en: 'A few times a week', zh: '一周几次' },
+                { v: 'weekly', en: 'About weekly', zh: '一周一次' },
+                { v: 'less', en: 'Less often', zh: '更少' },
+            ],
+            wearable: [
+                { v: 'yes', en: 'Yes', zh: '愿意' }, { v: 'maybe', en: 'Maybe', zh: '可能' },
+                { v: 'no', en: 'No', zh: '不愿意' }, { v: 'learn_more', en: 'Tell me more first', zh: '先了解一下' },
+            ],
+            logging: [
+                { v: 'yes', en: 'Yes', zh: '愿意' }, { v: 'maybe', en: 'Maybe', zh: '可能' }, { v: 'no', en: 'No', zh: '不愿意' },
+            ],
+            outcomes: [
+                { v: 'Earlier warning before a meltdown', en: 'Earlier warning', zh: '提前预警' },
+                { v: 'Help knowing what to say in the moment', en: 'What to say in the moment', zh: '当下知道说什么' },
+                { v: 'Shorter tantrums / meltdowns', en: 'Shorter meltdowns', zh: '崩溃时间变短' },
+                { v: 'Better understanding of triggers', en: 'Understanding triggers', zh: '搞懂诱因' },
+                { v: 'Less yelling or parent stress', en: 'Less yelling / stress', zh: '少吼、少内耗' },
+                { v: 'Better bedtime / morning routine', en: 'Smoother routines', zh: '日常更顺' },
+                { v: 'Better sibling conflict support', en: 'Sibling peace', zh: '手足和平' },
+                { v: 'Better child self-regulation skills', en: 'Kid self-regulation', zh: '孩子学会自我调节' },
+                { v: 'Other', en: 'Other', zh: '其他' },
+            ],
+            payment: [
+                { v: 'yes_10_15', en: 'Yes, $10–15/mo', zh: '愿意,$10–15/月' },
+                { v: 'yes_15_25', en: 'Yes, $15–25/mo', zh: '愿意,$15–25/月' },
+                { v: 'device_only', en: 'One-time device only', zh: '只买断设备' },
+                { v: 'maybe', en: 'Maybe', zh: '再看看' }, { v: 'no', en: 'No', zh: '不愿意' },
+            ],
+        };
 
-        function addChildRow() {
-            const index = childrenList.children.length + 1;
-            if (index > MAX_CHILDREN) return;
-            const row = document.createElement('div');
-            row.style.display = 'flex';
-            row.style.alignItems = 'center';
-            row.style.gap = '10px';
-            const label = document.createElement('span');
-            label.className = 'text-sm text-mute';
-            label.style.minWidth = '64px';
-            label.textContent = 'Child ' + index;
-            const select = document.createElement('select');
-            select.className = 'field child-age-select';
-            select.style.flex = '1';
-            const placeholder = document.createElement('option');
-            placeholder.value = '';
-            placeholder.textContent = index === 1 ? 'Age range…' : 'Age range (optional)…';
-            select.appendChild(placeholder);
-            AGE_OPTIONS.forEach((age) => {
-                const opt = document.createElement('option');
-                opt.value = age;
-                opt.textContent = age.replace('-', '–');
-                select.appendChild(opt);
-            });
-            row.appendChild(label);
-            row.appendChild(select);
-            childrenList.appendChild(row);
-            if (index >= MAX_CHILDREN) {
-                document.getElementById('add-child-btn').style.display = 'none';
+        // ── State ────────────────────────────────────────────────────────
+        let lang = localStorage.getItem('kidence.lang') ||
+            (new URLSearchParams(location.search).get('lang') === 'zh' ? 'zh' : 'en');
+        const S = {
+            parent_name: '', email: '', child_age_range: null, beta_interest: null,
+            hard_situations: [], hard_situations_other: '', episode_frequency: null,
+            wearable_willingness: null, logging_willingness: null,
+            valuable_outcomes: [], valuable_outcomes_other: '',
+            payment_willingness: null, phone: '', country: '', state_region: '',
+            additional_notes: '', children_ages: ['', ''],
+        };
+
+        const t = (k) => T[lang][k];
+        const esc = (x) => x.replace(/&/g, '&amp;').replace(/</g, '&lt;');
+
+        function tag(txt, req) {
+            return `<span class="text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full ${req ? 'bg-kidence-pastel-peach text-kidence-accent-hover' : 'bg-kidence-offwhite text-kidence-muted'}">${txt}</span>`;
+        }
+        function qhead(label, req, hint) {
+            return `<div class="flex items-center gap-2 mb-3"><label class="font-display text-lg font-medium">${label}</label>${tag(req ? t('required') : t('optional'), req)}${hint ? `<span class="text-xs text-kidence-muted">· ${hint}</span>` : ''}</div>`;
+        }
+        function pills(field, options, multi) {
+            const cur = S[field];
+            return `<div class="flex flex-wrap gap-2">` + options.map((o) => {
+                const on = multi ? cur.includes(o.v) : cur === o.v;
+                return `<button type="button" class="pill ${on ? 'on' : ''}" onclick="pick('${field}','${o.v.replace(/'/g, "\\'")}',${multi})">${o[lang]}</button>`;
+            }).join('') + `</div>`;
+        }
+        function textInput(field, type, placeholder) {
+            return `<input class="field" type="${type}" value="${esc(S[field])}" placeholder="${placeholder || ''}" oninput="S['${field}']=this.value">`;
+        }
+
+        function childrenAgesBlock() {
+            if (S.child_age_range !== 'multiple') return '';
+            const rows = S.children_ages.map((val, i) => `
+                <div class="flex items-center gap-3">
+                    <span class="text-sm text-kidence-muted w-16">${t('childN')} ${i + 1}</span>
+                    <select class="field" style="flex:1" onchange="S.children_ages[${i}]=this.value; ">
+                        <option value="">${i === 0 ? t('agePlaceholder') : t('ageOptional')}</option>
+                        ${OPT.age.slice(0, 5).map((o) => `<option value="${o.v}" ${val === o.v ? 'selected' : ''}>${o[lang]}</option>`).join('')}
+                    </select>
+                </div>`).join('');
+            return `<div class="space-y-2 mt-3">${rows}${S.children_ages.length < 6 ? `<button type="button" class="text-sm text-kidence-accent underline underline-offset-4" onclick="S.children_ages.push(''); render()">${t('addChild')}</button>` : ''}</div>`;
+        }
+
+        function render() {
+            document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+            document.getElementById('lang-toggle').textContent = lang === 'zh' ? 'EN' : '中文';
+            document.querySelectorAll('[data-t]').forEach((el) => (el.textContent = t(el.dataset.t)));
+
+            document.getElementById('essentials').innerHTML = `
+                <div class="space-y-7">
+                    <div>${qhead(t('q').name, true)}${textInput('parent_name', 'text')}</div>
+                    <div>${qhead(t('q').email, true)}${textInput('email', 'email', 'you@example.com')}</div>
+                    <div>${qhead(t('q').age, true)}${pills('child_age_range', OPT.age, false)}${childrenAgesBlock()}</div>
+                    <div>${qhead(t('q').beta, true)}<p class="text-xs text-kidence-muted -mt-1 mb-3 leading-relaxed max-w-lg">${t('q').betaNote}</p>${pills('beta_interest', OPT.beta, false)}</div>
+                </div>`;
+
+            document.getElementById('optional').innerHTML = `
+                <div class="space-y-7">
+                    <div>${qhead(t('q').situations, false, t('selectAll'))}${pills('hard_situations', OPT.situations, true)}
+                        ${S.hard_situations.includes('Other') ? `<div class="mt-2">${textInput('hard_situations_other', 'text', t('otherPlaceholder'))}</div>` : ''}</div>
+                    <div>${qhead(t('q').frequency, false)}${pills('episode_frequency', OPT.frequency, false)}</div>
+                    <div>${qhead(t('q').wearable, false)}${pills('wearable_willingness', OPT.wearable, false)}</div>
+                    <div>${qhead(t('q').logging, false)}${pills('logging_willingness', OPT.logging, false)}</div>
+                    <div>${qhead(t('q').outcomes, false, t('selectAll'))}${pills('valuable_outcomes', OPT.outcomes, true)}
+                        ${S.valuable_outcomes.includes('Other') ? `<div class="mt-2">${textInput('valuable_outcomes_other', 'text', t('otherPlaceholder'))}</div>` : ''}</div>
+                    <div>${qhead(t('q').payment, false)}${pills('payment_willingness', OPT.payment, false)}</div>
+                    <div>${qhead(t('q').phone, false)}${textInput('phone', 'tel')}</div>
+                    <div>${qhead(t('q').location, false)}<div class="grid grid-cols-2 gap-3">${textInput('country', 'text')}${textInput('state_region', 'text')}</div></div>
+                    <div>${qhead(t('q').notes, false)}<textarea class="field" rows="3" oninput="S.additional_notes=this.value">${esc(S.additional_notes)}</textarea></div>
+                </div>`;
+        }
+
+        function pick(field, value, multi) {
+            if (multi) {
+                const list = S[field];
+                S[field] = list.includes(value) ? list.filter((v) => v !== value) : [...list, value];
+            } else {
+                S[field] = S[field] === value ? null : value;
             }
-        }
-        addChildRow();
-        addChildRow();
-        document.getElementById('add-child-btn').addEventListener('click', addChildRow);
-
-        document.getElementById('child_age_range').addEventListener('change', () => {
-            const isMultiple = radioValue('child_age_range') === 'multiple';
-            document.getElementById('multi-children-block').classList.toggle('hidden', !isMultiple);
-        });
-
-        function childrenAges() {
-            return Array.from(document.querySelectorAll('.child-age-select'))
-                .map((el) => el.value)
-                .filter(Boolean);
+            render();
         }
 
-        // Reveal "Other" inputs when their checkbox is toggled
-        function wireOther(groupId, inputId) {
-            document.getElementById(groupId).addEventListener('change', () => {
-                const checked = !!document.querySelector('#' + groupId + ' input[value="Other"]:checked');
-                document.getElementById(inputId).classList.toggle('hidden', !checked);
-            });
-        }
-        wireOther('hard_situations', 'hard_situations_other');
-        wireOther('valuable_outcomes', 'valuable_outcomes_other');
-
-        const radioValue = (name) => (document.querySelector('input[name="' + name + '"]:checked') || {}).value || '';
-        const checkedValues = (name) => Array.from(document.querySelectorAll('input[name="' + name + '"]:checked')).map(el => el.value);
-        const text = (id) => document.getElementById(id).value.trim();
-
-        function showError(message) {
-            errorBox.textContent = message;
-            errorBox.classList.remove('hidden');
-            errorBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        function toggleLang() {
+            lang = lang === 'en' ? 'zh' : 'en';
+            localStorage.setItem('kidence.lang', lang);
+            render();
         }
 
-        form.addEventListener('submit', async (e) => {
+        function showError(msg) {
+            const el = document.getElementById('form-error');
+            el.textContent = msg;
+            el.classList.remove('hidden');
+            el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        document.getElementById('beta-form').addEventListener('submit', async (e) => {
             e.preventDefault();
-            errorBox.classList.add('hidden');
+            document.getElementById('form-error').classList.add('hidden');
+
+            if (!S.parent_name.trim() || !/.+@.+\..+/.test(S.email.trim()) || !S.child_age_range || !S.beta_interest) {
+                showError(t('errRequired'));
+                return;
+            }
+            const ages = S.children_ages.filter(Boolean);
+            if (S.child_age_range === 'multiple' && ages.length === 0) {
+                showError(t('errChild1'));
+                return;
+            }
+            if (document.getElementById('hp-website').value) { showSuccess(); return; }
 
             const payload = {
-                parent_name: text('parent_name'),
-                email: text('email'),
-                phone: text('phone') || null,
-                country: text('country') || null,
-                state_region: text('state_region') || null,
-                child_age_range: radioValue('child_age_range'),
-                hard_situations: checkedValues('hard_situations'),
-                hard_situations_other: text('hard_situations_other') || null,
-                episode_frequency: radioValue('episode_frequency'),
-                episode_description: text('episode_description') || null,
-                what_tried: text('what_tried') || null,
-                wearable_willingness: radioValue('wearable_willingness'),
-                logging_willingness: radioValue('logging_willingness'),
-                valuable_outcomes: checkedValues('valuable_outcomes'),
-                valuable_outcomes_other: text('valuable_outcomes_other') || null,
-                payment_willingness: radioValue('payment_willingness'),
-                beta_interest: radioValue('beta_interest'),
-                additional_notes: text('additional_notes') || null,
-                source: new URLSearchParams(window.location.search).get('src') || null,
+                parent_name: S.parent_name.trim(),
+                email: S.email.trim(),
+                phone: S.phone.trim() || null,
+                country: S.country.trim() || null,
+                state_region: S.state_region.trim() || null,
+                child_age_range: S.child_age_range,
+                hard_situations: S.hard_situations,
+                hard_situations_other: S.hard_situations_other.trim() || null,
+                episode_frequency: S.episode_frequency || '',
+                episode_description: null,
+                what_tried: null,
+                wearable_willingness: S.wearable_willingness || '',
+                logging_willingness: S.logging_willingness || '',
+                valuable_outcomes: S.valuable_outcomes,
+                valuable_outcomes_other: S.valuable_outcomes_other.trim() || null,
+                payment_willingness: S.payment_willingness || '',
+                beta_interest: S.beta_interest,
+                additional_notes: (S.additional_notes.trim() || '') + (lang === 'zh' ? ' [zh]' : '') || null,
+                source: new URLSearchParams(location.search).get('src') || null,
                 consent: true,
             };
+            if (S.child_age_range === 'multiple' && ages.length > 0) payload.children_ages = ages;
 
-            if (!payload.parent_name || !payload.email || !/.+@.+\..+/.test(payload.email) ||
-                !payload.child_age_range || payload.hard_situations.length === 0 ||
-                !payload.episode_frequency || !payload.wearable_willingness ||
-                !payload.logging_willingness || !payload.payment_willingness ||
-                !payload.beta_interest) {
-                showError('Please answer all required questions (marked with *), including a valid email.');
-                return;
-            }
+            const btn = document.getElementById('submit-btn');
+            btn.disabled = true;
 
-            if (payload.child_age_range === 'multiple') {
-                const ages = childrenAges();
-                if (ages.length === 0) {
-                    showError("Please select at least Child 1's age range.");
-                    return;
-                }
-                payload.children_ages = ages;
-            }
-
-            // Honeypot: bots get a fake success, nothing is stored
-            if (document.getElementById('hp-website').value) {
-                showSuccess();
-                return;
-            }
-
-            submitBtn.disabled = true;
-            submitLabel.textContent = 'Submitting…';
+            const post = (row) => fetch(SUPABASE_URL + '/rest/v1/beta_waitlist', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'apikey': SUPABASE_ANON_KEY,
+                    'Authorization': 'Bearer ' + SUPABASE_ANON_KEY,
+                    'Prefer': 'return=minimal',
+                },
+                body: JSON.stringify(row),
+            });
 
             try {
-                if (SUPABASE_URL.indexOf('PASTE_') === 0) throw new Error('Form is not configured yet.');
-
-                const postRow = (row) => fetch(SUPABASE_URL + '/rest/v1/beta_waitlist', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'apikey': SUPABASE_ANON_KEY,
-                        'Authorization': 'Bearer ' + SUPABASE_ANON_KEY,
-                        'Prefer': 'return=minimal',
-                    },
-                    body: JSON.stringify(row),
-                });
-
-                let response = await postRow(payload);
-                if (!response.ok && payload.children_ages) {
-                    // children_ages column may not exist yet — never lose a signup
-                    const fallback = Object.assign({}, payload);
-                    delete fallback.children_ages;
-                    fallback.additional_notes = ((fallback.additional_notes || '') +
-                        ' [children ages: ' + payload.children_ages.join(', ') + ']').trim();
-                    response = await postRow(fallback);
+                let res = await post(payload);
+                if (!res.ok && payload.children_ages) {
+                    const fb = Object.assign({}, payload);
+                    delete fb.children_ages;
+                    fb.additional_notes = ((fb.additional_notes || '') + ' [children ages: ' + ages.join(', ') + ']').trim();
+                    res = await post(fb);
                 }
-
-                if (!response.ok) throw new Error('Insert failed: ' + response.status);
+                if (!res.ok) throw new Error('insert failed');
                 showSuccess();
-            } catch (error) {
-                console.error(error);
-                showError('Something went wrong submitting the form. Please try again, or email hello@kidence.ai and we’ll add you directly.');
-                submitBtn.disabled = false;
-                submitLabel.textContent = 'Join the beta waitlist';
+            } catch (err) {
+                console.error(err);
+                showError(t('errSubmit'));
+                btn.disabled = false;
             }
         });
 
         function showSuccess() {
-            document.getElementById('form-section').classList.add('hidden');
-            document.getElementById('success-panel').classList.remove('hidden');
+            document.getElementById('beta-form').classList.add('hidden');
+            document.getElementById('success').classList.remove('hidden');
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
+
+        render();
     </script>
 </body>
 </html>
