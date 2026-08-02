@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kidence — Privacy Policy</title>
+    <meta name="robots" content="index,follow">
+    <link rel="icon" type="image/png" href="../favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = { theme: { extend: {
+            colors: { 'kidence-bg': '#FDFCFB', 'kidence-dark': '#2D2926', 'kidence-muted': '#6B6661', 'kidence-accent': '#D4A373', 'kidence-offwhite': '#F5F2F0' },
+            fontFamily: { sans: ['Inter','sans-serif'], display: ['Outfit','sans-serif'] },
+        } } }
+    </script>
+</head>
+<body class="bg-kidence-bg text-kidence-dark font-sans">
+    <nav class="container mx-auto px-6 py-5 flex items-center justify-between">
+        <a href="../" class="font-display text-2xl font-semibold tracking-tight">kidence</a>
+    </nav>
+
+    <main class="container mx-auto px-6 pb-24 max-w-2xl space-y-8">
+        <header class="pt-8 space-y-3">
+            <h1 class="font-display text-4xl font-light">Privacy Policy</h1>
+            <p class="text-sm text-kidence-muted">Effective August 2, 2026 · Kidence ("we", "us")</p>
+            <p class="text-kidence-muted leading-relaxed">Kidence helps parents understand and respond to their child's big feelings. Families trust us with sensitive moments, so this policy is written to be actually readable.</p>
+        </header>
+
+        <section class="space-y-3">
+            <h2 class="font-display text-2xl font-light">What we collect</h2>
+            <ul class="list-disc pl-5 space-y-2 text-kidence-muted leading-relaxed">
+                <li><strong class="text-kidence-dark">Your account:</strong> name and email (and phone, if you gave it on the beta waitlist).</li>
+                <li><strong class="text-kidence-dark">About your child:</strong> a first name or nickname and an age — never a birth date, school, address, or diagnosis.</li>
+                <li><strong class="text-kidence-dark">Moments you log:</strong> episode times and levels, the scene/trigger/feeling cards you pick, what you tried and whether it helped, notes you write, and — in Story Time — the feeling your child picks.</li>
+                <li><strong class="text-kidence-dark">Voice recordings:</strong> when you use voice input, your recording is sent securely for transcription, converted to text, and <strong class="text-kidence-dark">the audio is not stored</strong> — by us or by the transcription provider.</li>
+                <li><strong class="text-kidence-dark">Wearable signals</strong> (when you use a Kidence band): heart-rate and movement-derived arousal levels, tied to episodes.</li>
+            </ul>
+            <p class="text-kidence-muted leading-relaxed">We do <strong class="text-kidence-dark">not</strong> collect precise location, contacts, photos, or advertising identifiers. There are no ads and no data sales — our business is subscriptions, not your data.</p>
+        </section>
+
+        <section class="space-y-3">
+            <h2 class="font-display text-2xl font-light">How we use it</h2>
+            <p class="text-kidence-muted leading-relaxed">To run the product you see: personalized in-the-moment suggestions, practice scenarios, trends, and your child's stories are all generated from your family's own history. AI features send the relevant slice of that history to our AI providers (via OpenRouter, currently DeepSeek and Google models) to generate a response; those requests are used to serve you, not to build advertising profiles. We may use aggregated, de-identified patterns to improve Kidence's models.</p>
+        </section>
+
+        <section class="space-y-3">
+            <h2 class="font-display text-2xl font-light">Children's privacy</h2>
+            <p class="text-kidence-muted leading-relaxed">Kidence is used and controlled by parents. We collect the minimum about a child (nickname, age, and the moments a parent chooses to log), always through the parent's account and with the parent present for child-facing features like Story Time. We never contact children, show them ads, or allow anyone else to see their data. If you believe a child's data was provided without parental consent, email us and we will delete it.</p>
+        </section>
+
+        <section class="space-y-3">
+            <h2 class="font-display text-2xl font-light">Where it lives</h2>
+            <p class="text-kidence-muted leading-relaxed">Data is stored with Supabase (database, US region) and served via Vercel, encrypted in transit. Some rewards data (stickers, streaks) lives only on your device.</p>
+        </section>
+
+        <section class="space-y-3">
+            <h2 class="font-display text-2xl font-light">Deleting your data</h2>
+            <p class="text-kidence-muted leading-relaxed">Settings → Delete account permanently removes your account, your children's profiles, and every logged moment. You can also email <a class="underline text-kidence-accent" href="mailto:hello@kidence.ai">hello@kidence.ai</a> and we will delete your account within 48 hours.</p>
+        </section>
+
+        <section class="space-y-3">
+            <h2 class="font-display text-2xl font-light">Not a medical service</h2>
+            <p class="text-kidence-muted leading-relaxed">Kidence is not a medical device, diagnostic tool, or therapy service, and its suggestions are not medical advice. For concerns beyond everyday parenting, talk to your pediatrician.</p>
+        </section>
+
+        <section class="space-y-3">
+            <h2 class="font-display text-2xl font-light">Changes & contact</h2>
+            <p class="text-kidence-muted leading-relaxed">If this policy changes materially, we'll notify you in the app. Questions: <a class="underline text-kidence-accent" href="mailto:hello@kidence.ai">hello@kidence.ai</a>.</p>
+        </section>
+    </main>
+
+    <footer class="container mx-auto px-6 pb-14 text-center text-xs text-kidence-muted">© 2026 Kidence</footer>
+</body>
+</html>
