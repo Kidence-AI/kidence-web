@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kidence — Email Confirmed</title>
+    <meta name="robots" content="noindex">
+    <link rel="icon" type="image/png" href="../favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = { theme: { extend: {
+            colors: { 'kidence-bg': '#FDFCFB', 'kidence-dark': '#2D2926', 'kidence-muted': '#6B6661', 'kidence-accent': '#D4A373', 'kidence-offwhite': '#F5F2F0' },
+            fontFamily: { sans: ['Inter','sans-serif'], display: ['Outfit','sans-serif'] },
+        } } }
+    </script>
+</head>
+<body class="bg-kidence-bg text-kidence-dark font-sans min-h-screen flex flex-col">
+    <nav class="container mx-auto px-6 py-5">
+        <a href="../" class="font-display text-2xl font-semibold tracking-tight">kidence</a>
+    </nav>
+
+    <main class="flex-1 flex items-center justify-center px-6 pb-24">
+        <div class="max-w-md w-full text-center space-y-6">
+            <div class="text-6xl">✅</div>
+            <h1 class="font-display text-4xl font-light">You're all set!</h1>
+            <p class="text-kidence-muted leading-relaxed">
+                Your email is confirmed. Head back to the
+                <strong class="text-kidence-dark">Kidence app</strong> on your phone
+                and log in with your email and password.
+            </p>
+            <p class="text-kidence-muted leading-relaxed text-sm">
+                邮箱验证成功 — 回到手机上的 Kidence App,用你的邮箱和密码登录即可。
+            </p>
+            <div class="pt-2 text-sm text-kidence-muted">
+                You can close this page. · 本页可以关闭了。
+            </div>
+        </div>
+    </main>
+</body>
+</html>
