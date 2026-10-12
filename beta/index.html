@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Join the Kidence Family Beta</title>
-    <meta name="description" content="Join the Kidence family beta — a kid-friendly wristband and parent coaching app for tantrums, meltdowns, and big feelings.">
+    <title>Kidence Beta — Download Free</title>
+    <meta name="description" content="The Kidence beta is open: download the free iPhone app — sleep, activity and calm scores for your child, with AI insights in plain words. Android waitlist available.">
     <link rel="icon" type="image/png" href="../favicon.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -81,6 +81,19 @@
             <p class="text-xs text-kidence-muted" data-t="disclaimer"></p>
         </header>
 
+        <!-- Download -->
+        <section class="bg-white rounded-3xl p-8 sm:p-10 text-center space-y-4 shadow-sm mb-12">
+            <h2 class="font-display text-2xl font-light" data-t="dlTitle"></h2>
+            <a href="https://testflight.apple.com/join/X21CyjQX" target="_blank" rel="noopener" class="inline-block w-full sm:w-auto px-10 py-4 bg-kidence-dark text-white rounded-full font-medium shadow-xl hover:bg-kidence-accent transition-all" data-t="dlBtn"></a>
+            <p class="text-xs text-kidence-muted" data-t="dlNote"></p>
+        </section>
+
+        <!-- Form lead-in -->
+        <div class="text-center mb-10 space-y-2">
+            <h2 class="font-display text-2xl font-light" data-t="formTitle"></h2>
+            <p class="text-sm text-kidence-muted max-w-md mx-auto" data-t="formHint"></p>
+        </div>
+
         <!-- Success -->
         <section id="success" class="hidden bg-white rounded-3xl p-10 text-center space-y-4 shadow-sm">
             <div class="text-5xl">🎉</div>
@@ -120,10 +133,15 @@
         // ── i18n ─────────────────────────────────────────────────────────
         const T = {
             en: {
-                badge: 'Family beta · Now enrolling',
-                title: 'Join the family beta',
-                intro: 'A kid-friendly wristband + an app that coaches you through tantrums, meltdowns, and big feelings — every suggestion personalized to your child, down to a bedtime story custom-written from their day. The essentials take one minute; the rest is optional but helps us build it right.',
+                badge: 'Kidence beta · Open now',
+                title: 'The beta is open.',
+                intro: 'Sleep, activity and calm — clear daily scores for your child, AI insights in plain words, and Momo to make it theirs. Free on iPhone today; the band plugs in when it ships.',
                 disclaimer: 'Not a medical device, diagnosis tool, or therapy service.',
+                dlTitle: 'Get the app',
+                dlBtn: 'Download free on iPhone',
+                dlNote: 'Via Apple TestFlight · takes about a minute · iOS only for now',
+                formTitle: 'On Android — or want to shape what we build?',
+                formHint: "Leave your email and we'll tell you the moment Android lands. The questions below are optional, but they genuinely steer what we build next.",
                 optionalTitle: 'Help us build it right',
                 optionalHint: 'All optional — answer whatever you like.',
                 consent: 'By submitting, you agree that Kidence may contact you about the beta. Early research/beta product — not a medical, diagnostic, or therapy service.',
@@ -152,10 +170,15 @@
                 },
             },
             zh: {
-                badge: '家庭内测 · 招募中',
-                title: '加入家庭内测',
-                intro: '一只孩子愿意戴的小手环,搭配一个帮你接住孩子大情绪的 App:情绪爆发的当下,给出具体可执行的建议;事后根据孩子当天的真实经历,生成专属的睡前绘本——所有内容,都为你的孩子量身定制。必填部分一分钟完成,其余选填,每一题都会帮助我们把产品做得更好。',
+                badge: 'Kidence 公测 · 开放中',
+                title: '公测开放了',
+                intro: '睡眠、活动、平静 — 孩子每天的状态一目了然,AI 用大白话讲给你听,还有 Momo 陪着孩子。今天就能在 iPhone 上免费用;手环发货后无缝接入。',
                 disclaimer: '本产品不是医疗器械、诊断工具或治疗服务。',
+                dlTitle: '直接下载',
+                dlBtn: '在 iPhone 上免费下载',
+                dlNote: '通过 Apple TestFlight 安装 · 约一分钟 · 暂仅支持 iOS',
+                formTitle: '安卓用户,或想参与共创?',
+                formHint: '留下邮箱,安卓版上线第一时间通知你。下面的问题都是选填,但真的会决定我们接下来做什么。',
                 optionalTitle: '帮我们做得更好',
                 optionalHint: '以下全部选填,想答哪题答哪题。',
                 consent: '提交即表示同意 Kidence 就内测事宜与您联系。这是早期研究/内测产品,不构成医疗、诊断或治疗服务。',
